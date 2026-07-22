@@ -79,7 +79,7 @@ function enrollmentLabel(stage: EnrollmentStage): string {
   if (stage === "idle" || stage === "confirmed" || stage === "error" || stage === "confirming") {
     const labels: Record<string, string> = {
       idle: "Ready to issue",
-      confirming: "Waiting for Preview confirmation",
+      confirming: "Waiting for network confirmation",
       confirmed: "Credential enrolled",
       error: "Enrollment needs attention",
     };
@@ -237,7 +237,7 @@ export default function AdminPage() {
       saveGate(confirmed);
       setGate(confirmed);
       setDeploymentStage("published");
-      setDeploymentMessage("The Preview indexer confirmed the contract deployment.");
+      setDeploymentMessage("The Midnight indexer confirmed the contract deployment.");
     } catch (error) {
       const rawMsg = error instanceof Error ? error.message : "";
       
@@ -309,16 +309,16 @@ export default function AdminPage() {
   const confirmDeployment = async () => {
     if (!gate.contractId) return;
     setDeploymentStage("confirming");
-    setDeploymentMessage("Polling the Midnight Preview indexer... (0s elapsed)");
+    setDeploymentMessage("Polling the Midnight indexer... (0s elapsed)");
     try {
       await getClient().waitForContractDeployment(gate.contractId, 600000, (elapsed) => {
-        setDeploymentMessage(`Polling the Midnight Preview indexer... (${elapsed}s elapsed - indexer can lag up to 5 min)`);
+        setDeploymentMessage(`Polling the Midnight indexer... (${elapsed}s elapsed - indexer can lag up to 5 min)`);
       });
       const confirmed = { ...gate, status: "published" as const };
       saveGate(confirmed);
       setGate(confirmed);
       setDeploymentStage("published");
-      setDeploymentMessage("The Preview indexer confirmed the contract deployment.");
+      setDeploymentMessage("The Midnight indexer confirmed the contract deployment.");
     } catch (error) {
       setDeploymentStage("error");
       setDeploymentMessage(PrivoraClient.messageFor(error));
@@ -339,7 +339,7 @@ export default function AdminPage() {
 
     setRestoreBusy(true);
     try {
-      const network = gate.network === "undeployed" ? "preview" : gate.network;
+      const network = gate.network === "undeployed" ? "preprod" : gate.network;
       // Prefer the wallet's live indexer URL when connected (same endpoint deploy/enrollment use).
       const sessionIndexer = getClient().session?.indexerUrl ?? null;
       const lookup = await verifyContractIndexed(restoreContractId, network, sessionIndexer);
@@ -427,7 +427,7 @@ export default function AdminPage() {
     setCredential("");
     setPendingEnrollment(null);
     setEnrollmentStage("confirmed");
-    setEnrollmentMessage("Credential hash is confirmed on Preview. Copy the credential below and share it privately before clearing this page.");
+    setEnrollmentMessage("Credential hash is confirmed on-chain. Copy the credential below and share it privately before clearing this page.");
   };
 
   const enrollCredential = async (event: FormEvent<HTMLFormElement>) => {
@@ -457,7 +457,7 @@ export default function AdminPage() {
       const result = await getClient().addCredential(secret, contractAddress, handleEnrollmentProgress);
       if (result.alreadyEnrolled) {
         completeEnrollment();
-        setEnrollmentMessage("This credential hash was already enrolled on Preview. No duplicate transaction was submitted.");
+        setEnrollmentMessage("This credential hash was already enrolled on-chain. No duplicate transaction was submitted.");
         return;
       }
 
@@ -520,14 +520,14 @@ export default function AdminPage() {
             href={gateUrl(gate)}
             className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
-            Preview {gate.name} <ArrowRight size={16} aria-hidden="true" />
+            Open {gate.name} page <ArrowRight size={16} aria-hidden="true" />
           </Link>
         }
         maxWidth="6xl"
       >
         <section className="mb-8 paper-card p-5 sm:p-6" aria-label="Gate setup progress">
-          <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.16em] text-faint">
-            <span>Gate setup  -  {gate.name}</span>
+          <div className="flex flex-col gap-1 text-xs font-semibold uppercase tracking-[0.12em] text-faint sm:flex-row sm:items-center sm:justify-between">
+            <span className="break-words">Gate setup - {gate.name}</span>
             <span>{deploymentProgress}%</span>
           </div>
           <div className="mt-4 h-1 rounded-full bg-secondary">
@@ -543,14 +543,14 @@ export default function AdminPage() {
 
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <section className="paper-card p-6 sm:p-8" aria-labelledby="setup-heading">
-            <div className="flex items-start gap-4">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full border border-accent-soft/40 text-accent" aria-hidden="true">
-                <ShieldCheck size={22} />
-              </div>
-              <div>
-                <h2 id="setup-heading" className="text-xl font-bold text-primary">Gate setup</h2>
-                <p className="mt-1 text-sm text-faint">Members see this information before they connect.</p>
-              </div>
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full border border-accent-soft/40 text-accent" aria-hidden="true">
+                  <ShieldCheck size={22} />
+                </div>
+                <div className="min-w-0">
+                  <h2 id="setup-heading" className="text-xl font-bold text-primary">Gate setup</h2>
+                  <p className="mt-1 text-sm text-faint">Members see this information before they connect.</p>
+                </div>
             </div>
             <form onSubmit={saveConfiguration} className="mt-8 space-y-6">
               <div>
@@ -576,7 +576,7 @@ export default function AdminPage() {
                 <p className="mt-2 text-xs text-faint">Avoid secrets or personal information. This description is public gate metadata.</p>
               </div>
               <StatusBanner tone="info">
-                Preview network  -  one-time proof  -  private credential verification for <strong className="font-semibold">{name || gate.name}</strong>
+                {gate.network} network  -  one-time proof  -  private credential verification for <strong className="font-semibold">{name || gate.name}</strong>
               </StatusBanner>
               <button
                 type="submit"
@@ -590,7 +590,7 @@ export default function AdminPage() {
             <div className="mt-10 border-t border-border-subtle pt-8">
               <h3 className="text-lg font-bold text-primary">Wallet and deployment</h3>
               <p className="mt-2 text-sm leading-6 text-muted">
-                Deployment is permanent on Preview. Reconnect the administrator wallet after every page refresh before signing a new action.
+                Deployment is permanent on the selected Midnight network. Reconnect the administrator wallet after every page refresh before signing a new action.
               </p>
               <div className="mt-4 flex items-center gap-2 text-xs text-faint" role="status" aria-live="polite">
                 <span className={`h-2 w-2 rounded-full ${wallets.length > 0 ? "bg-accent" : "bg-amber-300"}`} aria-hidden="true" />
@@ -633,7 +633,7 @@ export default function AdminPage() {
                         ? "Waiting for wallet authorization."
                         : deploymentStage === "deploying"
                           ? "Building and submitting the gate deployment."
-                          : "Waiting for the Preview indexer to confirm deployment."
+                          : "Waiting for the Midnight indexer to confirm deployment."
                     }
                   />
                 </div>
@@ -667,7 +667,7 @@ export default function AdminPage() {
                     <BusyButtonContent
                       busy={false}
                       busyLabel="Deploying"
-                      idleLabel="Deploy gate to Preview"
+                      idleLabel={`Deploy gate to ${gate.network}`}
                       icon={<Rocket size={17} aria-hidden="true" />}
                     />
                   </button>
@@ -699,7 +699,7 @@ export default function AdminPage() {
                 {published && (
                   <div className="rounded-2xl border border-accent-soft/40 bg-accent-dim p-5">
                     <p className="font-semibold text-accent">{gate.name} published</p>
-                    <p className="mt-2 text-sm text-muted">The Preview indexer confirmed the contract deployment.</p>
+                    <p className="mt-2 text-sm text-muted">The Midnight indexer confirmed the contract deployment.</p>
                     {gate.contractId && (
                       <div className="mt-3">
                         <ProofReference
@@ -748,7 +748,7 @@ export default function AdminPage() {
                 )}
 
                 <div className="mt-8 paper-card p-5">
-                  <div className="flex items-center gap-2">
+                  <div className="flex min-w-0 items-center gap-2">
                     <Link2 size={18} className="text-accent" aria-hidden="true" />
                     <h3 className="text-base font-bold tracking-normal text-primary">Restore published gate</h3>
                   </div>
@@ -839,10 +839,10 @@ export default function AdminPage() {
 
           <aside className="space-y-6">
             <section className="paper-card p-6 sm:p-8" aria-labelledby="credential-heading">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex min-w-0 items-center gap-3">
                   <UserPlus size={21} className="text-accent" aria-hidden="true" />
-                  <div>
+                  <div className="min-w-0">
                     <h2 id="credential-heading" className="text-lg font-bold text-primary">Issue a member credential</h2>
                     <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-faint">
                       {enrollmentLabel(enrollmentStage)}
@@ -867,6 +867,10 @@ export default function AdminPage() {
               <p className="mt-4 text-sm leading-6 text-muted">
                 Privora hashes the credential locally before enrollment. Only the hash reaches the contract. Keep the raw credential private and share it only with the intended member.
               </p>
+              <StatusBanner tone="info" className="mt-4" title="Privacy notice">
+                Enrollment writes the credential hash into the public allowlist tree. The raw credential is not sent to
+                the chain, but the hash, admin key bytes, contract address, and later spent nullifiers are public state.
+              </StatusBanner>
 
               <ol className="mt-5 space-y-2 rounded-2xl border border-border-subtle bg-card p-4 text-sm leading-6 text-muted">
                 <li className="flex gap-3">
@@ -1021,7 +1025,7 @@ export default function AdminPage() {
               <h2 className="text-lg font-bold text-primary">What members need</h2>
               <ul className="mt-5 space-y-4 text-sm text-muted">
                 <li className="flex gap-3">
-                  <Check size={17} className="shrink-0 text-accent" aria-hidden="true" />A compatible Midnight wallet on Preview.
+                  <Check size={17} className="shrink-0 text-accent" aria-hidden="true" />A compatible Midnight wallet on {gate.network}.
                 </li>
                 <li className="flex gap-3">
                   <Check size={17} className="shrink-0 text-accent" aria-hidden="true" />The raw credential you shared privately for {gate.name}.

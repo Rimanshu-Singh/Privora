@@ -22,9 +22,9 @@ export function ProgressPanel({ stage, context = "prove", message }: ProgressPan
 
   return (
     <div className="paper-card p-5" role="status" aria-live="polite">
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
         <p className="eyebrow">Progress</p>
-        <p className="text-xs font-semibold text-accent">{progressLabel(stage, context)}</p>
+        <p className="break-words text-xs font-semibold text-accent">{progressLabel(stage, context)}</p>
       </div>
       <div className="mt-4 flex gap-1.5" aria-hidden="true">
         {ORDER.slice(0, 6).map((item, index) => {
@@ -40,7 +40,7 @@ export function ProgressPanel({ stage, context = "prove", message }: ProgressPan
       </div>
       <div className="mt-4 flex items-start gap-3">
         {active && <LoaderCircle size={18} className="mt-0.5 shrink-0 animate-spin text-accent" aria-hidden="true" />}
-        <div>
+        <div className="min-w-0">
           <p className="text-sm font-semibold text-primary">{progressLabel(stage, context)}</p>
           <p className="mt-1 text-sm leading-6 text-muted">{message || progressDetail(stage)}</p>
         </div>

@@ -16,7 +16,7 @@ export const DEFAULT_GATE: GateRecord = {
   id: "genesis",
   name: "Genesis Vault",
   description: "A private launch room for approved Privora members.",
-  network: "preview",
+  network: "preprod",
   contractId: null,
   deploymentTxId: null,
   status: "draft",
@@ -151,7 +151,7 @@ export function restorePublishedGate(input: {
     id,
     name: (input.name?.trim() || previous.name || DEFAULT_GATE.name).slice(0, 80),
     description: (input.description?.trim() || previous.description || DEFAULT_GATE.description).slice(0, 500),
-    network: input.network ?? previous.network ?? "preview",
+    network: input.network ?? previous.network ?? "preprod",
     contractId,
     deploymentTxId: input.deploymentTxId ?? previous.deploymentTxId ?? null,
     status: "published",
@@ -178,7 +178,7 @@ export function resolveGate(params: GateSearchParams = {}): GateRecord {
     const network =
       params.network === "preprod" || params.network === "mainnet" || params.network === "preview" || params.network === "undeployed"
         ? params.network
-        : fromStore?.network ?? "preview";
+        : fromStore?.network ?? "preprod";
 
     const resolved: GateRecord = {
       id: fromStore?.id ?? gateParam ?? gateIdFromContract(contractId),
@@ -216,7 +216,7 @@ export function gateUrl(gate: GateRecord): string {
   if (gate.name && gate.name !== DEFAULT_GATE.name) {
     params.set("name", gate.name);
   }
-  if (gate.network && gate.network !== "preview") {
+  if (gate.network && gate.network !== "preprod") {
     params.set("network", gate.network);
   }
   return `/gate?${params.toString()}`;

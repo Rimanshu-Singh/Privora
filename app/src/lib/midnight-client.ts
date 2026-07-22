@@ -48,15 +48,44 @@ export type CredentialEnrollmentResult = {
   alreadyEnrolled: boolean;
 };
 
-export const PREVIEW_CONFIG: SessionInfo = {
-  networkId: "preview",
-  // Indexer GraphQL v4 path is required (bare host returns 404).
-  indexerUrl: "https://indexer.preview.midnight.network/api/v4/graphql",
-  indexerWsUrl: "wss://indexer.preview.midnight.network/api/v4/graphql/ws",
-  proofServerUrl: "https://proof-server.preview.midnight.network",
-  nodeUrl: "https://rpc.preview.midnight.network",
-  unshieldedAddress: null,
+const DEFAULT_NETWORK: Exclude<NetworkId, "undeployed"> = "preprod";
+
+export const NETWORK_CONFIG: Record<Exclude<NetworkId, "undeployed">, SessionInfo> = {
+  preview: {
+    networkId: "preview",
+    // Indexer GraphQL v4 path is required (bare host returns 404).
+    indexerUrl: "https://indexer.preview.midnight.network/api/v4/graphql",
+    indexerWsUrl: "wss://indexer.preview.midnight.network/api/v4/graphql/ws",
+    proofServerUrl: "https://proof-server.preview.midnight.network",
+    nodeUrl: "https://rpc.preview.midnight.network",
+    unshieldedAddress: null,
+  },
+  preprod: {
+    networkId: "preprod",
+    indexerUrl: "https://indexer.preprod.midnight.network/api/v4/graphql",
+    indexerWsUrl: "wss://indexer.preprod.midnight.network/api/v4/graphql/ws",
+    proofServerUrl: "https://proof-server.preprod.midnight.network",
+    nodeUrl: "https://rpc.preprod.midnight.network",
+    unshieldedAddress: null,
+  },
+  mainnet: {
+    networkId: "mainnet",
+    indexerUrl: "https://indexer.midnight.network/api/v4/graphql",
+    indexerWsUrl: "wss://indexer.midnight.network/api/v4/graphql/ws",
+    proofServerUrl: "https://proof-server.midnight.network",
+    nodeUrl: "https://rpc.midnight.network",
+    unshieldedAddress: null,
+  },
 };
+
+export const PREVIEW_CONFIG: SessionInfo = NETWORK_CONFIG.preview;
+
+function networkConfig(network: NetworkId): SessionInfo {
+  if (network === "preview" || network === "preprod" || network === "mainnet") {
+    return NETWORK_CONFIG[network];
+  }
+  return NETWORK_CONFIG[DEFAULT_NETWORK];
+}
 
 const INDEXER_BY_NETWORK: Partial<Record<NetworkId, string>> = {
   preview: "https://indexer.preview.midnight.network/api/v4/graphql",
@@ -113,7 +142,7 @@ function contractAddressCandidates(contractId: string): string[] {
  */
 export async function verifyContractIndexed(
   contractId: string,
-  network: NetworkId = "preview",
+  network: NetworkId = DEFAULT_NETWORK,
   indexerUrlOverride?: string | null,
 ): Promise<ContractIndexLookup> {
   const hexBody = contractId.replace(/^0x/i, "").trim();
@@ -127,7 +156,7 @@ export async function verifyContractIndexed(
 
   const indexerUrl = indexerUrlOverride
     || INDEXER_BY_NETWORK[network]
-    || PREVIEW_CONFIG.indexerUrl;
+    || networkConfig(network).indexerUrl;
   const query =
     "query LatestContractState($address: HexEncoded!) { contractAction(address: $address) { __typename state } }";
 
@@ -411,7 +440,7 @@ export class PrivoraClient {
     throw new Error("NO_WALLET");
   }
 
-  async connectWallet(network: NetworkId = "preview", selectedWallet?: WalletOption): Promise<SessionInfo> {
+  async connectWallet(network: NetworkId = DEFAULT_NETWORK, selectedWallet?: WalletOption): Promise<SessionInfo> {
     const wallet = await this.findWallet(selectedWallet);
     let api: WalletApi;
     try {
@@ -452,12 +481,13 @@ export class PrivoraClient {
     const config = configuration as Record<string, unknown>;
     const actualNetwork = getString(config.networkId);
     if (actualNetwork && actualNetwork !== network) throw new Error(`NETWORK_MISMATCH_CONFIG:${actualNetwork}`);
+    const fallback = networkConfig(network);
     const session: SessionInfo = {
       networkId: (actualNetwork as NetworkId | null) ?? network,
-      indexerUrl: getString(config.indexerUri) ?? PREVIEW_CONFIG.indexerUrl,
-      indexerWsUrl: getString(config.indexerWsUri) ?? PREVIEW_CONFIG.indexerWsUrl,
-      proofServerUrl: getString(config.proverServerUri) ?? PREVIEW_CONFIG.proofServerUrl,
-      nodeUrl: getString(config.substrateNodeUri) ?? PREVIEW_CONFIG.nodeUrl,
+      indexerUrl: getString(config.indexerUri) ?? fallback.indexerUrl,
+      indexerWsUrl: getString(config.indexerWsUri) ?? fallback.indexerWsUrl,
+      proofServerUrl: getString(config.proverServerUri) ?? fallback.proofServerUrl,
+      nodeUrl: getString(config.substrateNodeUri) ?? fallback.nodeUrl,
       unshieldedAddress: (address as { unshieldedAddress?: string }).unshieldedAddress ?? null,
     };
 
@@ -701,7 +731,7 @@ export class PrivoraClient {
           const detail = getErrorMessage(error);
           if (detail.includes("__wbg_ptr")) {
             throw new Error(
-              "WASM proof binding failed (__wbg_ptr). Hard-reload the page, reconnect the wallet on Preview, and retry. If this persists, restart the browser so a single ledger WASM instance is loaded.",
+              "WASM proof binding failed (__wbg_ptr). Hard-reload the page, reconnect the wallet on the gate network, and retry. If this persists, restart the browser so a single ledger WASM instance is loaded.",
             );
           }
           throw error;
@@ -1152,7 +1182,7 @@ export class PrivoraClient {
           await new Promise((resolve) => window.setTimeout(resolve, 3000));
         }
       }
-      if (!contractLedger) throw new Error("Gate contract state is not available on the Preview indexer yet. Wait a minute after deploy and try again.");
+      if (!contractLedger) throw new Error("Gate contract state is not available on the Midnight indexer yet. Wait a minute after deploy and try again.");
       const admin = ensureBytes32(contractLedger.admin);
       if (!bytesEqual(admin, callerBytes)) {
         throw new Error("CREDENTIAL_NOT_ADMIN");
@@ -1266,14 +1296,14 @@ export class PrivoraClient {
     const message = getErrorMessage(error);
     const lower = message.toLowerCase();
     if (message === "NO_WALLET") return "No compatible Midnight wallet was found. Install or enable a wallet extension, then reload this page.";
-    if (message.startsWith("NETWORK_MISMATCH:")) return `The wallet is connected to ${message.slice("NETWORK_MISMATCH:".length)}, but this gate requires Preview. Switch networks in Lace and try again.`;
+    if (message.startsWith("NETWORK_MISMATCH:")) return `The wallet is connected to ${message.slice("NETWORK_MISMATCH:".length)}, but this gate requires a different Midnight network. Switch to the gate network in your wallet and try again.`;
     if (message.startsWith("WALLET_CONNECT_FAILED:") && (lower.includes("rejected") || lower.includes("permission"))) return "Lace declined the connection request. Unlock the wallet, approve this localhost site, and try again.";
     if (message.startsWith("WALLET_CONNECT_FAILED:")) return `Lace could not connect: ${message.slice("WALLET_CONNECT_FAILED:".length)}`;
     if (message.startsWith("WALLET_PERMISSION_FAILED:")) return "Lace connected, but did not grant the permissions required to prove, balance, and submit a deployment. Approve the additional Lace permission request and retry.";
     if (message.startsWith("NETWORK_MISMATCH_CONFIG:")) {
       const actual = message.slice("NETWORK_MISMATCH_CONFIG:".length);
-      if (actual === "undeployed") return "Lace is connected to the local undeployed network. Switch Lace to Preview for this app, or start the local Midnight proof server and change the app target to local development.";
-      return `Lace is connected to ${actual}, but this gate requires Preview. Switch Lace to Preview and reconnect.`;
+      if (actual === "undeployed") return "The wallet is connected to the local undeployed network. Switch to the gate network for this app, or start the local Midnight proof server and change the app target to local development.";
+      return `The wallet is connected to ${actual}, but this gate requires a different Midnight network. Switch to the gate network and reconnect.`;
     }
     if (message === "WALLET_CONFIG_UNAVAILABLE") return "Lace did not return its network configuration. Unlock Lace, reconnect, and approve the connection details request.";
     if (message.startsWith("WALLET_STATUS_FAILED:")) return `Lace authorized the request but did not return a valid session: ${message.slice("WALLET_STATUS_FAILED:".length)}`;
@@ -1281,12 +1311,12 @@ export class PrivoraClient {
     if (message === "CREDENTIAL_REQUIRED") return "A valid gate credential is required. Ask the gate administrator to issue access before submitting a proof.";
     if (message === "CREDENTIAL_FORMAT") return "Credentials must be exactly 32 bytes. The value stays in this browser and is never displayed after submission.";
     if (message === "CREDENTIAL_NOT_ENROLLED") return "This credential is not enrolled for the selected gate, or the gate state is not available yet.";
-    if (message === "CREDENTIAL_NOT_ADMIN") return "Only the original administrator wallet that deployed this gate can enroll credentials. Reconnect that same wallet on Preview and try again.";
+    if (message === "CREDENTIAL_NOT_ADMIN") return "Only the original administrator wallet that deployed this gate can enroll credentials. Reconnect that same wallet on the gate network and try again.";
     if (message.startsWith("ACCESS_PREPARE:")) return `The access proof could not be prepared: ${message.slice("ACCESS_PREPARE:".length)}`;
     if (message.startsWith("ACCESS_PROVE:")) {
       const detail = message.slice("ACCESS_PROVE:".length);
       if (detail.includes("__wbg_ptr") || lower.includes("wasm")) {
-        return "Access proof generation hit a Midnight WASM binding error. Hard-reload, reconnect your wallet on Preview, and try again.";
+        return "Access proof generation hit a Midnight WASM binding error. Hard-reload, reconnect your wallet on the gate network, and try again.";
       }
       return `Access proof generation failed: ${detail}`;
     }
@@ -1296,7 +1326,7 @@ export class PrivoraClient {
     if (message.startsWith("CREDENTIAL_PROVE:")) {
       const detail = message.slice("CREDENTIAL_PROVE:".length);
       if (detail.includes("__wbg_ptr") || lower.includes("wasm")) {
-        return "Proof generation hit a Midnight WASM binding error. Hard-reload this page, reconnect the administrator wallet on Preview, and enroll again.";
+        return "Proof generation hit a Midnight WASM binding error. Hard-reload this page, reconnect the administrator wallet on the gate network, and enroll again.";
       }
       return `Proof generation for credential enrollment failed: ${detail}`;
     }
@@ -1305,38 +1335,38 @@ export class PrivoraClient {
     if (message.startsWith("CREDENTIAL_TRANSACTION:")) {
       const detail = message.slice("CREDENTIAL_TRANSACTION:".length);
       if (detail.includes("__wbg_ptr")) {
-        return "Enrollment failed due to a Midnight WASM binding error after proving. Hard-reload, reconnect the admin wallet on Preview, and retry.";
+        return "Enrollment failed due to a Midnight WASM binding error after proving. Hard-reload, reconnect the admin wallet on the gate network, and retry.";
       }
       return `The credential enrollment transaction failed: ${detail}`;
     }
     if (message.startsWith("CREDENTIAL_HASH:")) return "The private credential could not be converted into its on-chain allowlist hash. Generate a new credential and retry.";
     if (message.startsWith("CREDENTIAL_CHECK:")) return `Privora could not check whether this credential is already enrolled: ${message.slice("CREDENTIAL_CHECK:".length)}`;
     if (message.startsWith("CREDENTIAL_CONFIRM_FAILED:")) return `The credential enrollment transaction was rejected on-chain: ${message.slice("CREDENTIAL_CONFIRM_FAILED:".length)}`;
-    if (message.startsWith("CREDENTIAL_CONFIRM:")) return `The credential enrollment is still pending. Do not submit it again until the Preview indexer confirms the first transaction. (${message.slice("CREDENTIAL_CONFIRM:".length)})`;
+    if (message.startsWith("CREDENTIAL_CONFIRM:")) return `The credential enrollment is still pending. Do not submit it again until the Midnight indexer confirms the first transaction. (${message.slice("CREDENTIAL_CONFIRM:".length)})`;
     if (message === "CREDENTIAL_SUBMITTED_NO_ID") return "The credential enrollment request completed without a transaction reference. Check the gate state before retrying to avoid enrolling twice.";
     if (lower.includes("__wbg_ptr")) {
-      return "A Midnight WASM module failed to bind (often after a hot reload). Hard-reload the page, reconnect the wallet on Preview, and try again.";
+      return "A Midnight WASM module failed to bind (often after a hot reload). Hard-reload the page, reconnect the wallet on the gate network, and try again.";
     }
     if (message === "GATE_NOT_CONFIGURED") return "This gate has not been deployed yet. Ask the administrator to finish setup.";
     if (message === "WALLET_NOT_CONNECTED") return "Reconnect your wallet before continuing.";
     if (message.startsWith("WALLET_SESSION:")) return `The wallet is connected but the Midnight transaction session could not be prepared: ${message.slice("WALLET_SESSION:".length)}`;
     if (message === "WALLET_DISCONNECTED") return "The wallet did not keep the connection open. Unlock it, keep the extension open, and try again.";
     if (message.startsWith("DEPLOY_ZK_ASSETS:")) return `A deployment proof asset could not be loaded. Verify this URL is reachable, then retry: ${message.slice("DEPLOY_ZK_ASSETS:".length)}`;
-    if (message.startsWith("DEPLOY_PROVER:")) return "The wallet could not initialize Preview proof generation. Unlock Lace, verify the Preview network, and retry.";
+    if (message.startsWith("DEPLOY_PROVER:")) return "The wallet could not initialize proof generation. Unlock the wallet, verify the selected Midnight network, and retry.";
     if (message.startsWith("DEPLOY_PROVIDER:")) return `Deployment setup failed before wallet approval: ${message.slice("DEPLOY_PROVIDER:".length)}`;
     if (message.startsWith("DEPLOY_KEY:")) {
       const detail = message.slice("DEPLOY_KEY:".length);
-      if (detail.includes("KEY_NETWORK:")) return `Lace returned a key for a different network. Switch Lace to Preview, reconnect, and retry. (${detail.slice("KEY_NETWORK:".length)})`;
+      if (detail.includes("KEY_NETWORK:")) return `The wallet returned a key for a different network. Switch to the gate network, reconnect, and retry. (${detail.slice("KEY_NETWORK:".length)})`;
       if (detail.includes("KEY_FORMAT:")) return `Lace returned an unsupported administrator key representation. ${detail.slice("KEY_FORMAT:".length)}`;
-      return `The wallet administrator key could not be used for Preview. ${detail}`;
+      return `The wallet administrator key could not be used for the selected network. ${detail}`;
     }
-    if (message.startsWith("DEPLOY_BUILD:")) return "The deployment transaction could not be constructed. Verify the wallet is connected to Preview and retry.";
-    if (message.startsWith("DEPLOY_PROVE:")) return `Preview proof generation failed: ${message.slice("DEPLOY_PROVE:".length)}`;
-    if (message.startsWith("DEPLOY_BALANCE:")) return `Preview transaction balancing failed. Check Lace permissions and Preview resources: ${message.slice("DEPLOY_BALANCE:".length)}`;
+    if (message.startsWith("DEPLOY_BUILD:")) return "The deployment transaction could not be constructed. Verify the wallet is connected to the gate network and retry.";
+    if (message.startsWith("DEPLOY_PROVE:")) return `Proof generation failed: ${message.slice("DEPLOY_PROVE:".length)}`;
+    if (message.startsWith("DEPLOY_BALANCE:")) return `Transaction balancing failed. Check wallet permissions and network resources: ${message.slice("DEPLOY_BALANCE:".length)}`;
     if (message.startsWith("DEPLOY_CONFIRM:")) {
-      return `The wallet accepted the deploy request, but Preview never indexed a contract at that address. With 1AM this usually means submit failed or the node dropped the tx (history stays empty). Click "Reset & redeploy from scratch", wait 10–15 minutes, reconnect 1AM on Preview, and deploy once - do not keep polling the same address. (${message.slice("DEPLOY_CONFIRM:".length)})`;
+      return `The wallet accepted the deploy request, but the Midnight indexer never found a contract at that address. With 1AM this usually means submit failed or the node dropped the tx (history stays empty). Click "Reset & redeploy from scratch", wait 10-15 minutes, reconnect 1AM on the gate network, and deploy once. (${message.slice("DEPLOY_CONFIRM:".length)})`;
     }
-    if (message.startsWith("DUST_EMPTY:")) return `Lace reports zero available Preview DUST, although its DUST capacity is ${message.slice("DUST_EMPTY:".length)}. Wait for the wallet to finish syncing/refilling, then reconnect Lace and retry.`;
+    if (message.startsWith("DUST_EMPTY:")) return `The wallet reports zero available DUST, although its DUST capacity is ${message.slice("DUST_EMPTY:".length)}. Wait for the wallet to finish syncing/refilling, then reconnect and retry.`;
     if (message.startsWith("DEPLOY_SUBMIT:")) {
       const rest = message.slice("DEPLOY_SUBMIT:".length);
       const contractMatch = rest.match(/^contractId=([0-9a-f]+):(.*)/i);
@@ -1344,7 +1374,7 @@ export class PrivoraClient {
         const [, addr, detail] = contractMatch;
         const lowerDetail = detail.toLowerCase();
         if (lowerDetail.includes("temporarily banned") || lowerDetail.includes("temp banned")) {
-          return `Preview rejected this deploy (transaction temporarily banned). It is not on-chain - 1AM history will stay empty. Wait 10–15 minutes, click "Reset & redeploy from scratch", then Deploy once. Do not spam Deploy. (Derived address was ${addr}.)`;
+          return `The network rejected this deploy (transaction temporarily banned). It is not on-chain - 1AM history will stay empty. Wait 10-15 minutes, click "Reset & redeploy from scratch", then Deploy once. Do not spam Deploy. (Derived address was ${addr}.)`;
         }
         if (lowerDetail.includes("no transaction id") || lowerDetail.includes("history is empty")) {
           return `1AM signed but did not return a transaction id, so the deploy almost certainly never landed. Wait, Reset & redeploy, then try once. (Derived address: ${addr}.) Detail: ${detail}`;
@@ -1353,8 +1383,8 @@ export class PrivoraClient {
       }
       return `The wallet rejected the sealed deployment transaction: ${rest}`;
     }
-    if (lower.includes("prover") || lower.includes("zkir") || lower.includes("verifier") || lower.includes("proof")) return `The Preview proof setup could not be loaded: ${message}`;
-    if (lower.includes("dust") || lower.includes("balance") || lower.includes("fee")) return "The wallet could not balance this deployment. Make sure the wallet is funded with the required Preview resources, then try again.";
+    if (lower.includes("prover") || lower.includes("zkir") || lower.includes("verifier") || lower.includes("proof")) return `The proof setup could not be loaded: ${message}`;
+    if (lower.includes("dust") || lower.includes("balance") || lower.includes("fee")) return "The wallet could not balance this deployment. Make sure the wallet is funded with the required network resources, then try again.";
     if (lower.includes("network") || lower.includes("unsupported")) return `The deployment cannot run on this wallet/network: ${message}`;
     return "The request could not be completed. Check the wallet network and try again.";
   }

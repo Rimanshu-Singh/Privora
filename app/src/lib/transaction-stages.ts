@@ -32,9 +32,9 @@ export function progressDetail(stage: ProgressStage): string {
     case "awaiting_wallet":
       return "Confirm the request in your wallet extension when prompted.";
     case "submitted":
-      return "The sealed transaction was sent to Preview.";
+      return "The sealed transaction was sent to the selected Midnight network.";
     case "confirming":
-      return "Polling the Preview indexer until the on-chain state updates.";
+      return "Polling the Midnight indexer until the on-chain state updates.";
     case "confirmed":
       return "The network has confirmed this action.";
     case "error":

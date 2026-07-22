@@ -13,7 +13,8 @@
   <img src="https://img.shields.io/badge/1AM_Wallet-FF5733?style=for-the-badge" alt="1AM Wallet" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
 
-  <br /><br />
+<br /><br />
+
   <h3>
     🌐 <a href="#">Live Demo Website</a>
     &nbsp;&nbsp;•&nbsp;&nbsp;
@@ -38,14 +39,14 @@
 
 ## 🌐 Live Demo
 
-[Add your Vercel / Netlify live demo link here]
+[https://privora-new.vercel.app](https://privora-new.vercel.app)
 
 ---
 
 ## 📋 Contract Address
 
-| Network | Address |
-|---------|---------|
+| Network     | Address                                                              |
+| ----------- | -------------------------------------------------------------------- |
 | **Preview** | `0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12` |
 
 > Verifiable on [Midnight Preview Explorer](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
@@ -56,14 +57,45 @@
 
 ### 🌑 Level 1 — New Moon
 
-| Requirement | Status |
-|---|:---:|
-| Toolchain installed and contract compiles via `compact compile` | ✅ **Passed** |
-| Passing test suite | ✅ **Passed** |
-| Generated `managed/` directory present (circuits + keys) | ✅ **Passed** |
+| Requirement                                                          |                                                                         Status                                                                         |
+| -------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Toolchain installed and contract compiles via `compact compile`      |                                                                     ✅ **Passed**                                                                      |
+| Passing test suite                                                   |                                                                     ✅ **Passed**                                                                      |
+| Generated `managed/` directory present (circuits + keys)             |                                                                     ✅ **Passed**                                                                      |
 | Contract deployed to Preview/Preprod with a visible contract address | ✅ **Passed** — [`0xc9a0...6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
-| Initial product idea (1 short paragraph) drafted in README | ✅ **Passed** — see [Problem Statement](#-problem-statement) & [Solution](#-solution) |
-| Minimum 5 meaningful commits | ✅ **Passed** |
+| Initial product idea (1 short paragraph) drafted in README           |                                 ✅ **Passed** — see [Problem Statement](#-problem-statement) & [Solution](#-solution)                                  |
+| Minimum 5 meaningful commits                                         |                                                                     ✅ **Passed**                                                                      |
+
+## 📷 Level 1 Verification Screenshots
+
+### 1. Successful Compile Output (Circuits Listed)
+
+<img width="677" height="217" alt="Screenshot 2026-07-22 124239" src="https://github.com/user-attachments/assets/8ee81aff-9c14-4e65-96e6-423087682449" />
+
+### 2. Automated Test Suite Passing
+
+<img width="486" height="169" alt="Screenshot 2026-07-22 123954" src="https://github.com/user-attachments/assets/b71b9cdb-8fc5-46d3-9a80-b390b3c44db1" />
+
+### 3. Contract Deployed on Midnight Preview (Explorer Address Verification)
+
+<img width="2558" height="1314" alt="Screenshot 2026-07-22 025802" src="https://github.com/user-attachments/assets/5800f493-9812-4290-9ae6-c300b80cce4b" />
+
+- **Network**: Midnight Preview
+- **Deployment Method**: Contract deployed using the official Midnight Browser DApp Connector (Lace / 1AM Wallet) through the Admin Dashboard deployment flow.
+- **Contract Address**: [`0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
+
+---
+
+## 🔎 Explorer Verification
+
+| Resource | Link                                                                                                                                                                        |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Explorer | [preview.midnightexplorer.com](https://preview.midnightexplorer.com)                                                                                                        |
+| Contract | [preview.midnightexplorer.com/contracts/0xc9a0...6afb12](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
+
+The application automatically provides explorer links after deployment and verification.
+
+---
 
 **Submission Checklist**
 
@@ -79,13 +111,27 @@
 
 ### 🌒 Level 2 — Waxing Crescent
 
-| Requirement | Status |
-|---|:---:|
-| Lace wallet connect / disconnect implemented | ✅ **Passed** — Browser DApp Connector API, Lace & 1AM support |
-| Circuit called successfully from the frontend | ✅ **Passed** — `verify_access()` runs in local ZK prover, broadcast via contract wrapper |
-| An observable privacy behavior (something proven without being shown) | ✅ **Passed** — Merkle membership + nullifier check proven locally without revealing the secret credential |
-| Contract deployed to Preprod with a verifiable address | ✅ **Passed** — [`0xc9a0...6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
-| Minimum 8 meaningful commits | ✅ **Passed** |
+| Requirement                                                           |                                                                                                  Status                                                                                                   |
+| --------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Lace wallet connect / disconnect implemented                          |                                                                      ✅ **Passed** — Browser DApp Connector API, Lace & 1AM support                                                                       |
+| Circuit called successfully from the frontend                         |                                                         ✅ **Passed** — `verify_access()` runs in local ZK prover, broadcast via contract wrapper                                                         |
+| An observable privacy behavior (something proven without being shown) |                                                ✅ **Passed** — Merkle membership + nullifier check proven locally without revealing the secret credential                                                 |
+| Contract deployed to Preprod with a verifiable address                | ✅ **Passed** — [`0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
+| Minimum 8 meaningful commits                                          |                                                                                               ✅ **Passed**                                                                                               |
+
+## 🎬 Demo Video
+
+[Add your demo video link here — Google Drive, YouTube, or similar]
+
+### What to Record (Under 2 Minutes)
+
+1. **Connect Lace wallet** — show the address appear on screen
+2. **Admin flow** — deploy a gate and enroll a credential hash
+3. **Navigate to Member Access page** — show the Public vs Private comparison
+4. **Click "Generate Proof"** — show the loading state during ZK proof generation
+5. **Show the on-chain result** — transaction hash and "Proved without revealing your input" label
+6. **Point out** that the raw secret credential was never shown in the UI or sent to the chain
+7. **Disconnect wallet** — show the UI reset to disconnected state
 
 **Submission Checklist**
 
@@ -100,15 +146,15 @@
 
 ### 🌓 Level 3 — First Quarter
 
-**Chosen Idea:** *Private Allowlist Access* — prove membership without revealing identity.
+**Chosen Idea:** _Private Allowlist Access_ — prove membership without revealing identity.
 
-| Requirement | Status |
-|---|:---:|
-| Fully functional dApp that meaningfully uses Midnight's privacy model | ✅ **Passed** |
-| Minimum 3 tests passing | ✅ **Passed** — see [Testing](#-testing) |
-| CI/CD pipeline running (workflow file + passing runs) | ✅ **Passed** |
-| Approved idea submitted from the provided idea list | ✅ **Passed** — *Private Allowlist Access* |
-| Minimum 10 meaningful commits | ✅ **Passed** |
+| Requirement                                                           |                   Status                   |
+| --------------------------------------------------------------------- | :----------------------------------------: |
+| Fully functional dApp that meaningfully uses Midnight's privacy model |               ✅ **Passed**                |
+| Minimum 3 tests passing                                               |  ✅ **Passed** — see [Testing](#-testing)  |
+| CI/CD pipeline running (workflow file + passing runs)                 |               ✅ **Passed**                |
+| Approved idea submitted from the provided idea list                   | ✅ **Passed** — _Private Allowlist Access_ |
+| Minimum 10 meaningful commits                                         |               ✅ **Passed**                |
 
 **Submission Checklist**
 
@@ -138,18 +184,21 @@ Privora is a privacy-preserving access gateway where:
 ## 🔒 Privacy Model
 
 ### What is PUBLIC (On-Chain — Visible to Everyone)
+
 - Merkle root of enrolled credential hashes
 - Set of spent nullifiers
 - Admin address
 - Whether a given access gate is active
 
 ### What is PRIVATE (Off-Chain — Never Leaves Your Browser)
+
 - 🔒 Your raw secret credential
 - 🔒 Your Merkle inclusion path
 - 🔒 Your wallet identity linkage to the credential
 - 🔒 All witness input values
 
 ### What the User PROVES Without Revealing
+
 - ✅ That their credential hash is a valid leaf in the Merkle Tree (membership)
 - ✅ That their nullifier has not been used before (no replay)
 - ✅ That the proof was authorized by a connected wallet
@@ -168,15 +217,15 @@ This is verified by the automated test suite, which confirms that private witnes
 
 ## ✨ Key Features
 
-* 🔐 **Zero-Knowledge Authentication** — Authenticate without revealing the original credential.
-* 🌳 **Merkle Tree Allowlist** — Authorized members are represented as hashed leaves; only hashes are ever stored.
-* ♻️ **Nullifier Protection** — Each successful proof generates a unique nullifier; spent nullifiers are permanently rejected, preventing replay attacks.
-* 👤 **Admin Console** — Deploy new access gates, enroll credential hashes, generate member credentials, share access links, and restore published gates.
-* 🔑 **Secure Member Access** — Connect wallet → paste secret → generate proof → unlock access. No sensitive data ever leaves the browser.
-* 🔌 **Multi-Wallet Support** — Connect and disconnect cleanly with Lace or 1AM wallet extensions.
-* 🔍 **Frontend Circuit Execution** — Call `verify_access()` directly from the browser with real-time proof generation feedback.
-* 🏷️ **Privacy Label** — "Proved without revealing your input" displayed after every successful circuit call.
-* 📊 **Explorer Integration** — Automatic explorer links for every transaction and contract deployment.
+- 🔐 **Zero-Knowledge Authentication** — Authenticate without revealing the original credential.
+- 🌳 **Merkle Tree Allowlist** — Authorized members are represented as hashed leaves; only hashes are ever stored.
+- ♻️ **Nullifier Protection** — Each successful proof generates a unique nullifier; spent nullifiers are permanently rejected, preventing replay attacks.
+- 👤 **Admin Console** — Deploy new access gates, enroll credential hashes, generate member credentials, share access links, and restore published gates.
+- 🔑 **Secure Member Access** — Connect wallet → paste secret → generate proof → unlock access. No sensitive data ever leaves the browser.
+- 🔌 **Multi-Wallet Support** — Connect and disconnect cleanly with Lace or 1AM wallet extensions.
+- 🔍 **Frontend Circuit Execution** — Call `verify_access()` directly from the browser with real-time proof generation feedback.
+- 🏷️ **Privacy Label** — "Proved without revealing your input" displayed after every successful circuit call.
+- 📊 **Explorer Integration** — Automatic explorer links for every transaction and contract deployment.
 
 ---
 
@@ -291,28 +340,28 @@ Only proof validity reaches the blockchain. Secrets remain private forever.
 └──────────────────────────────────────┘           └──────────────────────────────────────────────┘
 ```
 
-* **Public Ledger State (`export ledger`)**: Stores the Merkle root and spent nullifiers. Everyone can inspect these fields.
-* **Private Witness Callbacks (`witness`)**: Declares local functions that run *exclusively on the member's client machine*.
-* **Deliberate Selective Disclosure**: The `verify_access()` circuit asserts Merkle membership and nullifier uniqueness. Upon success, it inserts the nullifier into the spent set. **No credential or identity is ever passed to `disclose()`**, proving valid membership while preserving 100% credential secrecy.
+- **Public Ledger State (`export ledger`)**: Stores the Merkle root and spent nullifiers. Everyone can inspect these fields.
+- **Private Witness Callbacks (`witness`)**: Declares local functions that run _exclusively on the member's client machine_.
+- **Deliberate Selective Disclosure**: The `verify_access()` circuit asserts Merkle membership and nullifier uniqueness. Upon success, it inserts the nullifier into the spent set. **No credential or identity is ever passed to `disclose()`**, proving valid membership while preserving 100% credential secrecy.
 
 ---
 
 ## 🛠 Tech Stack
 
-| Layer | Technology | Description |
-| :--- | :--- | :--- |
-| **Smart Contract** | Compact Language (`v0.22.0+`) | Native ZK domain-specific language for public/private state transitions |
-| **Compiler** | Midnight Compact CLI (`v0.30.0`) | Compiles `.compact` code into ZKIR circuits and TypeScript wrappers |
-| **Runtime SDK** | `@midnight-ntwrk/compact-runtime` | TypeScript execution environment for contract simulation and proofs |
-| **Frontend** | Next.js 15 (App Router) + TypeScript | Modern SPA/SSR hybrid with component-based architecture |
-| **Styling** | Tailwind CSS | Dark, modern, responsive interface |
-| **Wallet Integration** | `@midnight-ntwrk/dapp-connector-api` | DApp Connector API for Lace and 1AM wallet extensions |
-| **Contract SDK** | `@midnight-ntwrk/midnight-js-contracts` | Contract deployment, discovery, and circuit call execution |
-| **Testing** | Jest / TypeScript | Automated unit tests for admin permissions, allowlist behavior, Merkle logic, and nullifier replay prevention |
-| **Target Network** | Midnight Preview | Live staging network for privacy-preserving dApps |
-| **Package Manager** | npm Workspaces | Monorepo dependency management |
-| **CI/CD** | GitHub Actions | Compile + test on every push |
-| **Deployment** | Vercel | Static/SSR hosting for the frontend application |
+| Layer                  | Technology                              | Description                                                                                                   |
+| :--------------------- | :-------------------------------------- | :------------------------------------------------------------------------------------------------------------ |
+| **Smart Contract**     | Compact Language (`v0.22.0+`)           | Native ZK domain-specific language for public/private state transitions                                       |
+| **Compiler**           | Midnight Compact CLI (`v0.30.0`)        | Compiles `.compact` code into ZKIR circuits and TypeScript wrappers                                           |
+| **Runtime SDK**        | `@midnight-ntwrk/compact-runtime`       | TypeScript execution environment for contract simulation and proofs                                           |
+| **Frontend**           | Next.js 15 (App Router) + TypeScript    | Modern SPA/SSR hybrid with component-based architecture                                                       |
+| **Styling**            | Tailwind CSS                            | Dark, modern, responsive interface                                                                            |
+| **Wallet Integration** | `@midnight-ntwrk/dapp-connector-api`    | DApp Connector API for Lace and 1AM wallet extensions                                                         |
+| **Contract SDK**       | `@midnight-ntwrk/midnight-js-contracts` | Contract deployment, discovery, and circuit call execution                                                    |
+| **Testing**            | Jest / TypeScript                       | Automated unit tests for admin permissions, allowlist behavior, Merkle logic, and nullifier replay prevention |
+| **Target Network**     | Midnight Preview                        | Live staging network for privacy-preserving dApps                                                             |
+| **Package Manager**    | npm Workspaces                          | Monorepo dependency management                                                                                |
+| **CI/CD**              | GitHub Actions                          | Compile + test on every push                                                                                  |
+| **Deployment**         | Vercel                                  | Static/SSR hosting for the frontend application                                                               |
 
 ---
 
@@ -329,38 +378,46 @@ Only proof validity reaches the blockchain. Secrets remain private forever.
 ## 🚀 Run Locally
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/Rimanshu-Singh/Privora.git
 cd Privora
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### 3. Compile the Compact Smart Contract (WSL/Linux)
+
 ```bash
 npm run compile
 ```
 
 ### 4. Run the Automated Test Suite
+
 ```bash
 npm test
 ```
 
 ### 5. Start the Proof Server (Docker)
+
 ```bash
 docker start proof-server
 ```
 
 ### 6. Start the Frontend Development Server
+
 ```bash
 npm run dev
 ```
+
 Open `http://localhost:3000` in your browser.
 
 ### 7. Connect Wallet & Call Circuit
+
 1. Open `http://localhost:3000` → click **Launch App**
 2. Click **Connect Wallet** → select **Lace** or **1AM** → approve in extension
 3. Navigate to the **Member Access** page
@@ -369,19 +426,6 @@ Open `http://localhost:3000` in your browser.
 6. See "Proved without revealing your input" confirmation and unlock the vault
 
 ---
-
-## 🎬 Demo Video
-
-[Add your demo video link here — Google Drive, YouTube, or similar]
-
-### What to Record (Under 2 Minutes)
-1. **Connect Lace wallet** — show the address appear on screen
-2. **Admin flow** — deploy a gate and enroll a credential hash
-3. **Navigate to Member Access page** — show the Public vs Private comparison
-4. **Click "Generate Proof"** — show the loading state during ZK proof generation
-5. **Show the on-chain result** — transaction hash and "Proved without revealing your input" label
-6. **Point out** that the raw secret credential was never shown in the UI or sent to the chain
-7. **Disconnect wallet** — show the UI reset to disconnected state
 
 ---
 
@@ -402,7 +446,6 @@ Privora/
 │   ├── lib/
 │   │   └── useMidnight.ts           ← Midnight.js SDK hook
 │   └── pages/
-<<<<<<< HEAD
 │
 ├── contracts/
 │   ├── src/
@@ -410,8 +453,6 @@ Privora/
 │   ├── tests/
 │   └── compiler/
 │
-=======
->>>>>>> 2ffe49895c20576d4682e5710f717987cc10429f
 ├── public/
 ├── .github/
 │   └── workflows/
@@ -424,39 +465,11 @@ Privora/
 
 ## 📸 Application Interface
 
-| Landing Page | Admin Dashboard |
-| :---: | :---: |
-| _[placeholder — add screenshot]_ | _[placeholder — add screenshot]_ |
-| **Deploy Access Gate** | **Member Access / Proof Generation** |
-| _[placeholder — add screenshot]_ | _[placeholder — add screenshot]_ |
-
----
-
-## 📷 Level 1 Verification Screenshots
-
-### 1. Successful Compile Output (Circuits Listed)
-_[placeholder — add screenshot]_
-
-### 2. Automated Test Suite Passing
-_[placeholder — add screenshot]_
-
-### 3. Contract Deployed on Midnight Preview (Explorer Address Verification)
-_[placeholder — add screenshot]_
-
-* **Network**: Midnight Preview
-* **Deployment Method**: Contract deployed using the official Midnight Browser DApp Connector (Lace / 1AM Wallet) through the Admin Dashboard deployment flow.
-* **Contract Address**: [`0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
-
----
-
-## 🔎 Explorer Verification
-
-| Resource | Link |
-| ----------- | ----------------------------------------------------- |
-| Explorer | [preview.midnightexplorer.com](https://preview.midnightexplorer.com) |
-| Contract | [preview.midnightexplorer.com/contracts/0xc9a0...6afb12](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
-
-The application automatically provides explorer links after deployment and verification.
+|           Landing Page           |           Admin Dashboard            |
+| :------------------------------: | :----------------------------------: |
+| _[placeholder — add screenshot]_ |   _[placeholder — add screenshot]_   |
+|      **Deploy Access Gate**      | **Member Access / Proof Generation** |
+| _[placeholder — add screenshot]_ |   _[placeholder — add screenshot]_   |
 
 ---
 
@@ -478,7 +491,8 @@ The test suite validates:
 > Testing uses mocked in-memory structures for fast iteration; end-to-end proof generation is verified separately via the browser proof server.
 
 ### Test Output
-_[placeholder — add screenshot of 3+ tests passing]_
+
+<img width="486" height="169" alt="Screenshot 2026-07-22 123954" src="https://github.com/user-attachments/assets/1956bef9-193a-4d3b-b7a1-ec9f3aebe2ca" />
 
 ---
 
@@ -491,6 +505,7 @@ A GitHub Actions workflow compiles the Compact contract and runs the full test s
 ```
 
 _[placeholder — add CI/CD badge once workflow is live, e.g.]_
+
 ```md
 [![CI/CD Pipeline Status](https://github.com/Rimanshu-Singh/Privora/actions/workflows/ci.yml/badge.svg)](https://github.com/Rimanshu-Singh/Privora/actions/workflows/ci.yml)
 ```
@@ -500,6 +515,7 @@ _[placeholder — add CI/CD badge once workflow is live, e.g.]_
 ## 🚀 Deployment
 
 ### Frontend
+
 Deploy directly to Vercel:
 
 ```bash
@@ -509,6 +525,7 @@ npm run build
 Import the repository into Vercel. No production environment variables are required.
 
 ### Smart Contract
+
 Contracts are deployed through the built-in Admin Dashboard. Each deployment creates a unique contract address on Midnight Preview, automatically linked to the Explorer.
 
 ---
@@ -570,9 +587,9 @@ Contributions are welcome.
 
 ## 🙏 Acknowledgments
 
-* **Midnight Foundation & IOG** for building the ground-breaking privacy-first blockchain architecture.
-* **RiseIn** for hosting the *New Moon to Full* builder program.
-* **Lace Wallet** and **1AM Wallet** for providing Midnight-compatible wallet extensions and enabling seamless browser testing.
+- **Midnight Foundation & IOG** for building the ground-breaking privacy-first blockchain architecture.
+- **RiseIn** for hosting the _New Moon to Full_ builder program.
+- **Lace Wallet** and **1AM Wallet** for providing Midnight-compatible wallet extensions and enabling seamless browser testing.
 
 ---
 

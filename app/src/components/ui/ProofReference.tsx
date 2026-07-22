@@ -23,7 +23,7 @@ export function ProofReference({
   label = "Proof reference",
   className = "",
   kind = "transaction",
-  network = "preview",
+  network = "preprod",
 }: ProofReferenceProps) {
   const [copied, setCopied] = useState(false);
   const explorerUrl =
@@ -42,7 +42,7 @@ export function ProofReference({
   return (
     <div className={`flex flex-wrap items-center gap-x-3 gap-y-2 ${className}`}>
       <span className="text-xs text-faint">{label}</span>
-      <code className="font-mono text-xs text-muted">{shorten(value, 8)}</code>
+      <code className="min-w-0 break-all font-mono text-xs text-muted">{shorten(value, 8)}</code>
       <button
         type="button"
         onClick={() => void copy()}

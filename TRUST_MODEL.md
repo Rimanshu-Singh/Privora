@@ -1,6 +1,6 @@
 # Privora trust model (Level 3 demo)
 
-This document states what Privora **does** and **does not** guarantee on Midnight Preview. Judges and operators should treat the product as a production-*minded* demo, not a hardened access-control system.
+This document states what Privora **does** and **does not** guarantee on the selected Midnight network. The Level 1 target is Midnight Preprod. Judges and operators should treat the product as a production-*minded* demo, not a hardened access-control system.
 
 ## On-chain guarantees (when the circuit and network behave as designed)
 

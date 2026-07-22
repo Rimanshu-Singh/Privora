@@ -54,6 +54,14 @@ const nextConfig: NextConfig = {
       topLevelAwait: true,
     };
 
+    config.output = {
+      ...config.output,
+      environment: {
+        ...config.output?.environment,
+        asyncFunction: true,
+      },
+    };
+
     return config;
   },
 };

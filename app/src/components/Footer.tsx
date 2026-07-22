@@ -20,7 +20,7 @@ export function Footer() {
           >
             Midnight docs
           </a>
-          <span className="font-mono">preview, Apache 2.0</span>
+          <span className="font-mono">preprod, Apache 2.0</span>
         </div>
       </div>
     </footer>

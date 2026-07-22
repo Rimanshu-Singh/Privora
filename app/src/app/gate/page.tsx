@@ -207,6 +207,13 @@ function GatePageContent() {
               Privora proves that your private credential belongs to this gate. The credential itself is never
               displayed in the result.
             </p>
+            <div className="mt-6 rounded-2xl border border-border-subtle bg-surface p-4 text-xs leading-5 text-muted">
+              <p className="font-semibold text-primary">Privacy notice</p>
+              <p className="mt-2">
+                Your raw credential and Merkle path are used as private witness inputs during proof generation. The
+                chain records the successful state transition, including a spent nullifier, but not the raw credential.
+              </p>
+            </div>
             <div className="mt-10 space-y-4 border-t border-border-subtle pt-6 text-sm">
               <div className="flex items-center justify-between gap-4">
                 <span className="text-faint">Network</span>
@@ -337,6 +344,10 @@ function GatePageContent() {
                       (64 hex characters). Privora hashes it locally and proves the hash is on the allowlist. The
                       secret is cleared before proof generation and never stored by Privora.
                     </p>
+                    <StatusBanner tone="info" className="mt-4" title="What becomes public">
+                      The contract checks a public allowlist root and records a public nullifier after success. It does
+                      not publish your raw credential or the Merkle path used to prove membership.
+                    </StatusBanner>
                     <input
                       id="credential"
                       name="credential"

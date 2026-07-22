@@ -44,20 +44,20 @@ export function WalletConnectModal({ open, wallets, selectedRdns, onClose, onSel
       }}
     >
       <section
-        className="w-full max-w-lg rounded-3xl border border-border-subtle bg-card shadow-[0_24px_80px_rgba(20,22,26,0.18)]"
+        className="max-h-[calc(100vh-2rem)] w-full max-w-lg overflow-y-auto rounded-3xl border border-border-subtle bg-card shadow-[0_24px_80px_rgba(20,22,26,0.18)]"
         role="dialog"
         aria-modal="true"
         aria-labelledby="wallet-modal-title"
         aria-describedby="wallet-modal-description"
       >
-        <div className="flex items-start justify-between border-b border-border-subtle p-6">
-          <div>
+        <div className="flex items-start justify-between gap-4 border-b border-border-subtle p-5 sm:p-6">
+          <div className="min-w-0">
             <p className="eyebrow">Wallet connection</p>
-            <h2 id="wallet-modal-title" className="mt-2 font-display text-3xl leading-tight text-primary">
+            <h2 id="wallet-modal-title" className="mt-2 font-display text-2xl leading-tight text-primary sm:text-3xl">
               Choose a wallet
             </h2>
             <p id="wallet-modal-description" className="mt-2 text-sm leading-6 text-muted">
-              Select the wallet you want to use for this Preview session. Privora will request permission only from that wallet.
+              Select the wallet you want to use for this Midnight session. Privora will request permission only from that wallet.
             </p>
           </div>
           <button
@@ -71,7 +71,7 @@ export function WalletConnectModal({ open, wallets, selectedRdns, onClose, onSel
           </button>
         </div>
 
-        <div className="space-y-3 p-6">
+        <div className="space-y-3 p-5 sm:p-6">
           {wallets.map((wallet) => {
             const selected = wallet.rdns === selectedRdns;
             return (

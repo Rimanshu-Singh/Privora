@@ -2,21 +2,21 @@
  * On-chain verification links for Midnight networks.
  * Official community explorer partnership (Midnight Foundation):
  * - Preview: https://preview.midnightexplorer.com
- * - Testnet: https://testnet.midnightexplorer.com
+ * - Preprod: https://preprod.midnightexplorer.com
  */
 
 export type ExplorerNetwork = "preview" | "preprod" | "mainnet" | "undeployed";
 
 const EXPLORER_BASE: Record<Exclude<ExplorerNetwork, "undeployed">, string> = {
   preview: "https://preview.midnightexplorer.com",
-  preprod: "https://testnet.midnightexplorer.com",
+  preprod: "https://preprod.midnightexplorer.com",
   // Mainnet explorer host may change; keep preview pattern until brand hub updates.
   mainnet: "https://midnightexplorer.com",
 };
 
-export function explorerBaseUrl(network: ExplorerNetwork = "preview"): string | null {
+export function explorerBaseUrl(network: ExplorerNetwork = "preprod"): string | null {
   if (network === "undeployed") return null;
-  return EXPLORER_BASE[network] ?? EXPLORER_BASE.preview;
+  return EXPLORER_BASE[network] ?? EXPLORER_BASE.preprod;
 }
 
 /** Normalize hex for explorer paths (prefer 0x prefix). */
@@ -32,7 +32,7 @@ export function toExplorerHex(value: string): string {
  */
 export function explorerTransactionUrl(
   txId: string | null | undefined,
-  network: ExplorerNetwork = "preview",
+  network: ExplorerNetwork = "preprod",
 ): string | null {
   if (!txId) return null;
   const base = explorerBaseUrl(network);
@@ -46,7 +46,7 @@ export function explorerTransactionUrl(
  */
 export function explorerContractUrl(
   contractId: string | null | undefined,
-  network: ExplorerNetwork = "preview",
+  network: ExplorerNetwork = "preprod",
 ): string | null {
   if (!contractId) return null;
   const base = explorerBaseUrl(network);
@@ -56,6 +56,6 @@ export function explorerContractUrl(
   return `${base}/contracts/${hashWithout0x}`;
 }
 
-export function explorerHomeUrl(network: ExplorerNetwork = "preview"): string | null {
+export function explorerHomeUrl(network: ExplorerNetwork = "preprod"): string | null {
   return explorerBaseUrl(network);
 }
