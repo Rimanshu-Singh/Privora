@@ -47,9 +47,9 @@
 
 | Network     | Address                                                              |
 | ----------- | -------------------------------------------------------------------- |
-| **Preview** | `0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12` |
+| **Preprod** | `<PREPROD_CONTRACT_ADDRESS_PENDING>` |
 
-> Verifiable on [Midnight Preview Explorer](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
+> Preprod deployment pending. Verify the new address on [Midnight Preprod Explorer](https://preprod.midnightexplorer.com) after deployment.
 
 ---
 
@@ -62,7 +62,7 @@
 | Toolchain installed and contract compiles via `compact compile`      |                                                                     ✅ **Passed**                                                                      |
 | Passing test suite                                                   |                                                                     ✅ **Passed**                                                                      |
 | Generated `managed/` directory present (circuits + keys)             |                                                                     ✅ **Passed**                                                                      |
-| Contract deployed to Preview/Preprod with a visible contract address | ✅ **Passed** — [`0xc9a0...6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
+| Contract deployed to Preprod with a visible contract address | Pending - deploy from the Admin Dashboard |
 | Initial product idea (1 short paragraph) drafted in README           |                                 ✅ **Passed** — see [Problem Statement](#-problem-statement) & [Solution](#-solution)                                  |
 | Minimum 5 meaningful commits                                         |                                                                     ✅ **Passed**                                                                      |
 
@@ -76,13 +76,13 @@
 
 <img width="486" height="169" alt="Screenshot 2026-07-22 123954" src="https://github.com/user-attachments/assets/b71b9cdb-8fc5-46d3-9a80-b390b3c44db1" />
 
-### 3. Contract Deployed on Midnight Preview (Explorer Address Verification)
+### 3. Contract Deployed on Midnight Preprod (Explorer Address Verification)
 
 <img width="2558" height="1314" alt="Screenshot 2026-07-22 025802" src="https://github.com/user-attachments/assets/5800f493-9812-4290-9ae6-c300b80cce4b" />
 
-- **Network**: Midnight Preview
+- **Network**: Midnight Preprod
 - **Deployment Method**: Contract deployed using the official Midnight Browser DApp Connector (Lace / 1AM Wallet) through the Admin Dashboard deployment flow.
-- **Contract Address**: [`0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
+- **Contract Address**: [`<PREPROD_CONTRACT_ADDRESS_PENDING>`](https://preprod.midnightexplorer.com/contracts/<PREPROD_CONTRACT_ADDRESS_PENDING>)
 
 ---
 
@@ -90,8 +90,8 @@
 
 | Resource | Link                                                                                                                                                                        |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Explorer | [preview.midnightexplorer.com](https://preview.midnightexplorer.com)                                                                                                        |
-| Contract | [preview.midnightexplorer.com/contracts/0xc9a0...6afb12](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
+| Explorer | [preprod.midnightexplorer.com](https://preprod.midnightexplorer.com)                                                                                                        |
+| Contract | [preprod.midnightexplorer.com/contracts/<PREPROD_CONTRACT_ADDRESS_PENDING>](https://preprod.midnightexplorer.com/contracts/<PREPROD_CONTRACT_ADDRESS_PENDING>) |
 
 The application automatically provides explorer links after deployment and verification.
 
@@ -116,7 +116,7 @@ The application automatically provides explorer links after deployment and verif
 | Lace wallet connect / disconnect implemented                          |                                                                      ✅ **Passed** — Browser DApp Connector API, Lace & 1AM support                                                                       |
 | Circuit called successfully from the frontend                         |                                                         ✅ **Passed** — `verify_access()` runs in local ZK prover, broadcast via contract wrapper                                                         |
 | An observable privacy behavior (something proven without being shown) |                                                ✅ **Passed** — Merkle membership + nullifier check proven locally without revealing the secret credential                                                 |
-| Contract deployed to Preprod with a verifiable address                | ✅ **Passed** — [`0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
+| Contract deployed to Preprod with a verifiable address | Pending - no Preprod address has been verified yet |
 | Minimum 8 meaningful commits                                          |                                                                                               ✅ **Passed**                                                                                               |
 
 ## 🎬 Demo Video
@@ -137,7 +137,7 @@ The application automatically provides explorer links after deployment and verif
 
 - [x] Public GitHub repository with README
 - [x] Live demo link (Vercel, Netlify, or similar)
-- [x] Deployed Preview/Preprod contract address (verifiable on-chain)
+- [ ] Deployed Preprod contract address (pending manual deployment)
 - [x] Demo video: wallet connect + a successful circuit call
 - [x] README documenting the privacy claim
 - [x] Minimum 8 meaningful commits
@@ -173,7 +173,7 @@ The application automatically provides explorer links after deployment and verif
 
 Privora is a privacy-preserving access gateway where:
 
-1. **Admins** deploy an access gate on the Midnight Preview network and enroll authorized members by hashing their credentials into a Merkle Tree.
+1. **Admins** deploy an access gate on the Midnight Preprod network and enroll authorized members by hashing their credentials into a Merkle Tree.
 2. **Members** connect their wallet (Lace or 1AM) and paste their secret credential locally in the browser.
 3. A Zero-Knowledge proof is generated client-side, proving the credential's hash is a valid leaf in the enrolled Merkle Tree **and** that its nullifier has never been used before.
 4. Only the **proof**, the **Merkle root check result**, and the **nullifier** are recorded on-chain — the raw credential, wallet identity, and Merkle path are **never transmitted or stored anywhere**.
@@ -331,7 +331,7 @@ Only proof validity reaches the blockchain. Secrets remain private forever.
 ## 🔒 Security & Architecture: Public State vs. Private Witness
 
 ```text
-[ Member's Local Proving Engine ]                   [ Midnight Preview Blockchain Ledger ]
+[ Member's Local Proving Engine ]                   [ Midnight Preprod Blockchain Ledger ]
 ┌──────────────────────────────────────┐           ┌──────────────────────────────────────────────┐
 │ Private Witness Inputs (Off-Chain):  │           │ Public Ledger State (Visible to All):        │
 │ • Raw Secret Credential               │  ──(ZK)─► │ • Merkle Root of Enrolled Credentials        │
@@ -358,7 +358,7 @@ Only proof validity reaches the blockchain. Secrets remain private forever.
 | **Wallet Integration** | `@midnight-ntwrk/dapp-connector-api`    | DApp Connector API for Lace and 1AM wallet extensions                                                         |
 | **Contract SDK**       | `@midnight-ntwrk/midnight-js-contracts` | Contract deployment, discovery, and circuit call execution                                                    |
 | **Testing**            | Jest / TypeScript                       | Automated unit tests for admin permissions, allowlist behavior, Merkle logic, and nullifier replay prevention |
-| **Target Network**     | Midnight Preview                        | Live staging network for privacy-preserving dApps                                                             |
+| **Target Network**     | Midnight Preprod                        | Live staging network for privacy-preserving dApps                                                             |
 | **Package Manager**    | npm Workspaces                          | Monorepo dependency management                                                                                |
 | **CI/CD**              | GitHub Actions                          | Compile + test on every push                                                                                  |
 | **Deployment**         | Vercel                                  | Static/SSR hosting for the frontend application                                                               |
@@ -367,11 +367,11 @@ Only proof validity reaches the blockchain. Secrets remain private forever.
 
 ## 📋 Prerequisites
 
-- **Lace Wallet** (Midnight Beta) or **1AM Wallet** browser extension installed and set to the **Preview** network
+- **Lace Wallet** (Midnight Beta) or **1AM Wallet** browser extension installed and set to the **Preprod** network
 - **Node.js** v20+ (Node 22 LTS recommended)
 - **Docker Desktop** running with the Midnight Proof Server container (for local ZK proof generation)
 - **WSL 2 (Ubuntu)** or Linux/macOS (for the Compact compiler)
-- Preview network DUST balance in your wallet
+- Preprod network DUST balance in your wallet
 
 ---
 
@@ -526,7 +526,7 @@ Import the repository into Vercel. No production environment variables are requi
 
 ### Smart Contract
 
-Contracts are deployed through the built-in Admin Dashboard. Each deployment creates a unique contract address on Midnight Preview, automatically linked to the Explorer.
+Contracts are deployed through the built-in Admin Dashboard. Each deployment creates a unique contract address on Midnight Preprod. Preprod deployment is pending until you connect a funded Preprod wallet and deploy from /admin.
 
 ---
 
@@ -655,9 +655,9 @@ This project is licensed under the **MIT License**.
 
 | Network     | Address                                                              |
 | ----------- | -------------------------------------------------------------------- |
-| **Preview** | `0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12` |
+| **Preprod** | `<PREPROD_CONTRACT_ADDRESS_PENDING>` |
 
-> Verifiable on [Midnight Preview Explorer](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
+> Preprod deployment pending. Verify the new address on [Midnight Preprod Explorer](https://preprod.midnightexplorer.com) after deployment.
 
 ---
 
@@ -670,7 +670,7 @@ This project is licensed under the **MIT License**.
 | Toolchain installed and contract compiles via `compact compile`      |                                                                     ✅ **Passed**                                                                      |
 | Passing test suite                                                   |                                                                     ✅ **Passed**                                                                      |
 | Generated `managed/` directory present (circuits + keys)             |                                                                     ✅ **Passed**                                                                      |
-| Contract deployed to Preview/Preprod with a visible contract address | ✅ **Passed** — [`0xc9a0...6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
+| Contract deployed to Preprod with a visible contract address | Pending - deploy from the Admin Dashboard |
 | Initial product idea (1 short paragraph) drafted in README           |                                 ✅ **Passed** — see [Problem Statement](#-problem-statement) & [Solution](#-solution)                                  |
 | Minimum 5 meaningful commits                                         |                                                                     ✅ **Passed**                                                                      |
 
@@ -684,13 +684,13 @@ This project is licensed under the **MIT License**.
 
 <img width="486" height="169" alt="Screenshot 2026-07-22 123954" src="https://github.com/user-attachments/assets/b71b9cdb-8fc5-46d3-9a80-b390b3c44db1" />
 
-### 3. Contract Deployed on Midnight Preview (Explorer Address Verification)
+### 3. Contract Deployed on Midnight Preprod (Explorer Address Verification)
 
 <img width="2558" height="1314" alt="Screenshot 2026-07-22 025802" src="https://github.com/user-attachments/assets/5800f493-9812-4290-9ae6-c300b80cce4b" />
 
-- **Network**: Midnight Preview
+- **Network**: Midnight Preprod
 - **Deployment Method**: Contract deployed using the official Midnight Browser DApp Connector (Lace / 1AM Wallet) through the Admin Dashboard deployment flow.
-- **Contract Address**: [`0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
+- **Contract Address**: [`<PREPROD_CONTRACT_ADDRESS_PENDING>`](https://preprod.midnightexplorer.com/contracts/<PREPROD_CONTRACT_ADDRESS_PENDING>)
 
 ---
 
@@ -698,8 +698,8 @@ This project is licensed under the **MIT License**.
 
 | Resource | Link                                                                                                                                                                        |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Explorer | [preview.midnightexplorer.com](https://preview.midnightexplorer.com)                                                                                                        |
-| Contract | [preview.midnightexplorer.com/contracts/0xc9a0...6afb12](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
+| Explorer | [preprod.midnightexplorer.com](https://preprod.midnightexplorer.com)                                                                                                        |
+| Contract | [preprod.midnightexplorer.com/contracts/<PREPROD_CONTRACT_ADDRESS_PENDING>](https://preprod.midnightexplorer.com/contracts/<PREPROD_CONTRACT_ADDRESS_PENDING>) |
 
 The application automatically provides explorer links after deployment and verification.
 
@@ -724,7 +724,7 @@ The application automatically provides explorer links after deployment and verif
 | Lace wallet connect / disconnect implemented                          |                                                                      ✅ **Passed** — Browser DApp Connector API, Lace & 1AM support                                                                       |
 | Circuit called successfully from the frontend                         |                                                         ✅ **Passed** — `verify_access()` runs in local ZK prover, broadcast via contract wrapper                                                         |
 | An observable privacy behavior (something proven without being shown) |                                                ✅ **Passed** — Merkle membership + nullifier check proven locally without revealing the secret credential                                                 |
-| Contract deployed to Preprod with a verifiable address                | ✅ **Passed** — [`0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
+| Contract deployed to Preprod with a verifiable address | Pending - no Preprod address has been verified yet |
 | Minimum 8 meaningful commits                                          |                                                                                               ✅ **Passed**                                                                                               |
 
 ## 🎬 Demo Video
@@ -745,7 +745,7 @@ The application automatically provides explorer links after deployment and verif
 
 - [x] Public GitHub repository with README
 - [x] Live demo link (Vercel, Netlify, or similar)
-- [x] Deployed Preview/Preprod contract address (verifiable on-chain)
+- [ ] Deployed Preprod contract address (pending manual deployment)
 - [x] Demo video: wallet connect + a successful circuit call
 - [x] README documenting the privacy claim
 - [x] Minimum 8 meaningful commits
@@ -781,7 +781,7 @@ The application automatically provides explorer links after deployment and verif
 
 Privora is a privacy-preserving access gateway where:
 
-1. **Admins** deploy an access gate on the Midnight Preview network and enroll authorized members by hashing their credentials into a Merkle Tree.
+1. **Admins** deploy an access gate on the Midnight Preprod network and enroll authorized members by hashing their credentials into a Merkle Tree.
 2. **Members** connect their wallet (Lace or 1AM) and paste their secret credential locally in the browser.
 3. A Zero-Knowledge proof is generated client-side, proving the credential's hash is a valid leaf in the enrolled Merkle Tree **and** that its nullifier has never been used before.
 4. Only the **proof**, the **Merkle root check result**, and the **nullifier** are recorded on-chain — the raw credential, wallet identity, and Merkle path are **never transmitted or stored anywhere**.
@@ -939,7 +939,7 @@ Only proof validity reaches the blockchain. Secrets remain private forever.
 ## 🔒 Security & Architecture: Public State vs. Private Witness
 
 ```text
-[ Member's Local Proving Engine ]                   [ Midnight Preview Blockchain Ledger ]
+[ Member's Local Proving Engine ]                   [ Midnight Preprod Blockchain Ledger ]
 ┌──────────────────────────────────────┐           ┌──────────────────────────────────────────────┐
 │ Private Witness Inputs (Off-Chain):  │           │ Public Ledger State (Visible to All):        │
 │ • Raw Secret Credential               │  ──(ZK)─► │ • Merkle Root of Enrolled Credentials        │
@@ -966,7 +966,7 @@ Only proof validity reaches the blockchain. Secrets remain private forever.
 | **Wallet Integration** | `@midnight-ntwrk/dapp-connector-api`    | DApp Connector API for Lace and 1AM wallet extensions                                                         |
 | **Contract SDK**       | `@midnight-ntwrk/midnight-js-contracts` | Contract deployment, discovery, and circuit call execution                                                    |
 | **Testing**            | Jest / TypeScript                       | Automated unit tests for admin permissions, allowlist behavior, Merkle logic, and nullifier replay prevention |
-| **Target Network**     | Midnight Preview                        | Live staging network for privacy-preserving dApps                                                             |
+| **Target Network**     | Midnight Preprod                        | Live staging network for privacy-preserving dApps                                                             |
 | **Package Manager**    | npm Workspaces                          | Monorepo dependency management                                                                                |
 | **CI/CD**              | GitHub Actions                          | Compile + test on every push                                                                                  |
 | **Deployment**         | Vercel                                  | Static/SSR hosting for the frontend application                                                               |
@@ -975,11 +975,11 @@ Only proof validity reaches the blockchain. Secrets remain private forever.
 
 ## 📋 Prerequisites
 
-- **Lace Wallet** (Midnight Beta) or **1AM Wallet** browser extension installed and set to the **Preview** network
+- **Lace Wallet** (Midnight Beta) or **1AM Wallet** browser extension installed and set to the **Preprod** network
 - **Node.js** v20+ (Node 22 LTS recommended)
 - **Docker Desktop** running with the Midnight Proof Server container (for local ZK proof generation)
 - **WSL 2 (Ubuntu)** or Linux/macOS (for the Compact compiler)
-- Preview network DUST balance in your wallet
+- Preprod network DUST balance in your wallet
 
 ---
 
@@ -1134,7 +1134,7 @@ Import the repository into Vercel. No production environment variables are requi
 
 ### Smart Contract
 
-Contracts are deployed through the built-in Admin Dashboard. Each deployment creates a unique contract address on Midnight Preview, automatically linked to the Explorer.
+Contracts are deployed through the built-in Admin Dashboard. Each deployment creates a unique contract address on Midnight Preprod. Preprod deployment is pending until you connect a funded Preprod wallet and deploy from /admin.
 
 ---
 

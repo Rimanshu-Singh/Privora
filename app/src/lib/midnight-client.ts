@@ -2,7 +2,7 @@ import type { MidnightProviders } from "@midnight-ntwrk/midnight-js-types";
 import "@midnight-ntwrk/dapp-connector-api";
 import type { InitialAPI } from "@midnight-ntwrk/dapp-connector-api";
 
-export type NetworkId = "preview" | "preprod" | "mainnet" | "undeployed";
+export type NetworkId = "preprod" | "undeployed";
 
 export type WalletAddresses = {
   shieldedCoinPublicKey?: unknown;
@@ -48,49 +48,31 @@ export type CredentialEnrollmentResult = {
   alreadyEnrolled: boolean;
 };
 
-const DEFAULT_NETWORK: Exclude<NetworkId, "undeployed"> = "preprod";
+export const APP_NETWORK: Exclude<NetworkId, "undeployed"> = "preprod";
+export const APP_NETWORK_LABEL = "Midnight Preprod";
+
+export const PREPROD_CONFIG: SessionInfo = {
+  networkId: "preprod",
+  indexerUrl: "https://indexer.preprod.midnight.network/api/v4/graphql",
+  indexerWsUrl: "wss://indexer.preprod.midnight.network/api/v4/graphql/ws",
+  proofServerUrl: "https://proof-server.preprod.midnight.network",
+  nodeUrl: "https://rpc.preprod.midnight.network",
+  unshieldedAddress: null,
+};
 
 export const NETWORK_CONFIG: Record<Exclude<NetworkId, "undeployed">, SessionInfo> = {
-  preview: {
-    networkId: "preview",
-    // Indexer GraphQL v4 path is required (bare host returns 404).
-    indexerUrl: "https://indexer.preview.midnight.network/api/v4/graphql",
-    indexerWsUrl: "wss://indexer.preview.midnight.network/api/v4/graphql/ws",
-    proofServerUrl: "https://proof-server.preview.midnight.network",
-    nodeUrl: "https://rpc.preview.midnight.network",
-    unshieldedAddress: null,
-  },
   preprod: {
-    networkId: "preprod",
-    indexerUrl: "https://indexer.preprod.midnight.network/api/v4/graphql",
-    indexerWsUrl: "wss://indexer.preprod.midnight.network/api/v4/graphql/ws",
-    proofServerUrl: "https://proof-server.preprod.midnight.network",
-    nodeUrl: "https://rpc.preprod.midnight.network",
-    unshieldedAddress: null,
-  },
-  mainnet: {
-    networkId: "mainnet",
-    indexerUrl: "https://indexer.midnight.network/api/v4/graphql",
-    indexerWsUrl: "wss://indexer.midnight.network/api/v4/graphql/ws",
-    proofServerUrl: "https://proof-server.midnight.network",
-    nodeUrl: "https://rpc.midnight.network",
-    unshieldedAddress: null,
+    ...PREPROD_CONFIG,
   },
 };
 
-export const PREVIEW_CONFIG: SessionInfo = NETWORK_CONFIG.preview;
-
 function networkConfig(network: NetworkId): SessionInfo {
-  if (network === "preview" || network === "preprod" || network === "mainnet") {
-    return NETWORK_CONFIG[network];
-  }
-  return NETWORK_CONFIG[DEFAULT_NETWORK];
+  if (network !== APP_NETWORK) throw new Error("PREPROD_REQUIRED");
+  return PREPROD_CONFIG;
 }
 
 const INDEXER_BY_NETWORK: Partial<Record<NetworkId, string>> = {
-  preview: "https://indexer.preview.midnight.network/api/v4/graphql",
   preprod: "https://indexer.preprod.midnight.network/api/v4/graphql",
-  mainnet: "https://indexer.midnight.network/api/v4/graphql",
 };
 
 export type ContractIndexLookup = {
@@ -142,7 +124,7 @@ function contractAddressCandidates(contractId: string): string[] {
  */
 export async function verifyContractIndexed(
   contractId: string,
-  network: NetworkId = DEFAULT_NETWORK,
+  network: NetworkId = APP_NETWORK,
   indexerUrlOverride?: string | null,
 ): Promise<ContractIndexLookup> {
   const hexBody = contractId.replace(/^0x/i, "").trim();
@@ -338,7 +320,7 @@ async function decodeCoinPublicKey(value: unknown, networkId: NetworkId): Promis
     if (encoded.type !== "shield-cpk" && encoded.type !== "shield-addr") {
       throw new Error(`Wallet returned Bech32m type ${encoded.type}, expected shield-cpk or shield-addr.`);
     }
-    if (networkId !== "mainnet" && encoded.network !== networkId) {
+    if (encoded.network !== networkId) {
       throw new Error(`Expected ${networkId} key, got ${String(encoded.network)} key.`);
     }
     const bytes = new Uint8Array(encoded.data.slice(0, 32));
@@ -346,7 +328,7 @@ async function decodeCoinPublicKey(value: unknown, networkId: NetworkId): Promis
     return ensureBytes32(bytes);
   } catch (error) {
     const message = getErrorMessage(error);
-    if (/Expected .*?, got .* one/i.test(message) || /network/i.test(message) && /preview|preprod|mainnet|undeployed/i.test(message)) {
+    if (/Expected .*?, got .* key/i.test(message) || /network/i.test(message)) {
       throw new Error(`KEY_NETWORK:${message}`);
     }
     throw new Error(`KEY_FORMAT:${message}`);
@@ -440,7 +422,8 @@ export class PrivoraClient {
     throw new Error("NO_WALLET");
   }
 
-  async connectWallet(network: NetworkId = DEFAULT_NETWORK, selectedWallet?: WalletOption): Promise<SessionInfo> {
+  async connectWallet(network: NetworkId = APP_NETWORK, selectedWallet?: WalletOption): Promise<SessionInfo> {
+    if (network !== APP_NETWORK) throw new Error(`NETWORK_MISMATCH:${network}`);
     const wallet = await this.findWallet(selectedWallet);
     let api: WalletApi;
     try {
@@ -483,7 +466,7 @@ export class PrivoraClient {
     if (actualNetwork && actualNetwork !== network) throw new Error(`NETWORK_MISMATCH_CONFIG:${actualNetwork}`);
     const fallback = networkConfig(network);
     const session: SessionInfo = {
-      networkId: (actualNetwork as NetworkId | null) ?? network,
+      networkId: APP_NETWORK,
       indexerUrl: getString(config.indexerUri) ?? fallback.indexerUrl,
       indexerWsUrl: getString(config.indexerWsUri) ?? fallback.indexerWsUrl,
       proofServerUrl: getString(config.proverServerUri) ?? fallback.proofServerUrl,
@@ -572,7 +555,7 @@ export class PrivoraClient {
         return String(address ?? "").replace(/^0x/i, "").toLowerCase();
       }
     };
-    const publicDataProvider = this.session.networkId === "preview" || this.session.networkId === "preprod"
+    const publicDataProvider = this.session.networkId === APP_NETWORK
       ? {
           ...basePublicDataProvider,
           queryContractState: async (contractAddress: string, config?: unknown) => {
@@ -1296,16 +1279,20 @@ export class PrivoraClient {
     const message = getErrorMessage(error);
     const lower = message.toLowerCase();
     if (message === "NO_WALLET") return "No compatible Midnight wallet was found. Install or enable a wallet extension, then reload this page.";
-    if (message.startsWith("NETWORK_MISMATCH:")) return `The wallet is connected to ${message.slice("NETWORK_MISMATCH:".length)}, but this gate requires a different Midnight network. Switch to the gate network in your wallet and try again.`;
+    if (message === "PREPROD_REQUIRED") return "Wrong network. This dApp only supports Midnight Preprod. Please switch your wallet to Preprod and reconnect.";
+    if (message.startsWith("NETWORK_MISMATCH:")) {
+      const actual = message.slice("NETWORK_MISMATCH:".length);
+      return `Wrong network. This dApp only supports Midnight Preprod. Please switch your wallet${actual ? ` from ${actual}` : ""} to Preprod and reconnect.`;
+    }
     if (message.startsWith("WALLET_CONNECT_FAILED:") && (lower.includes("rejected") || lower.includes("permission"))) return "Lace declined the connection request. Unlock the wallet, approve this localhost site, and try again.";
     if (message.startsWith("WALLET_CONNECT_FAILED:")) return `Lace could not connect: ${message.slice("WALLET_CONNECT_FAILED:".length)}`;
     if (message.startsWith("WALLET_PERMISSION_FAILED:")) return "Lace connected, but did not grant the permissions required to prove, balance, and submit a deployment. Approve the additional Lace permission request and retry.";
     if (message.startsWith("NETWORK_MISMATCH_CONFIG:")) {
       const actual = message.slice("NETWORK_MISMATCH_CONFIG:".length);
-      if (actual === "undeployed") return "The wallet is connected to the local undeployed network. Switch to the gate network for this app, or start the local Midnight proof server and change the app target to local development.";
-      return `The wallet is connected to ${actual}, but this gate requires a different Midnight network. Switch to the gate network and reconnect.`;
+      if (actual === "undeployed") return "Wrong network. This dApp only supports Midnight Preprod. Please switch your wallet from the local undeployed network to Preprod and reconnect.";
+      return `Wrong network. This dApp only supports Midnight Preprod. Please switch your wallet from ${actual || "the current network"} to Preprod and reconnect.`;
     }
-    if (message === "WALLET_CONFIG_UNAVAILABLE") return "Lace did not return its network configuration. Unlock Lace, reconnect, and approve the connection details request.";
+    if (message === "WALLET_CONFIG_UNAVAILABLE") return "Unable to verify wallet network. Please ensure your wallet is connected to Midnight Preprod.";
     if (message.startsWith("WALLET_STATUS_FAILED:")) return `Lace authorized the request but did not return a valid session: ${message.slice("WALLET_STATUS_FAILED:".length)}`;
     if (message.includes("User rejected") || lower.includes("rejected")) return "The wallet request was canceled. Connect the wallet again when you are ready.";
     if (message === "CREDENTIAL_REQUIRED") return "A valid gate credential is required. Ask the gate administrator to issue access before submitting a proof.";

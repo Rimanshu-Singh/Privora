@@ -30,5 +30,4 @@
 
 ## Notes
 
-- Existing documented address `0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12` was verified on Midnight Preview, not Preprod.
-- A read-only Preprod indexer lookup for that address returned no contract state.
+- Preprod deployment is pending until a funded Preprod wallet deploys from `/admin`.

@@ -26,6 +26,8 @@ export function WalletSessionBar({
   onSwitch,
   className = "",
 }: WalletSessionBarProps) {
+  const onPreprod = network === "preprod";
+
   return (
     <div
       className={`flex flex-col gap-3 rounded-2xl border border-accent-soft/40 bg-accent-dim p-4 sm:flex-row sm:items-center sm:justify-between ${className}`}
@@ -39,7 +41,9 @@ export function WalletSessionBar({
         <div className="min-w-0">
           <p className="text-sm font-semibold text-accent">
             {walletName || "Wallet"} connected
-            {network ? <span className="font-normal text-muted">  -  {network}</span> : null}
+          </p>
+          <p className={`mt-1 text-xs font-semibold ${onPreprod ? "text-accent" : "text-red-500"}`}>
+            {onPreprod ? "Network: Midnight Preprod" : "Wrong Network - switch to Preprod"}
           </p>
           {address && (
             <p className="mt-1 break-all font-mono text-xs text-muted" title={address}>

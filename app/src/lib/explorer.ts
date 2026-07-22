@@ -1,22 +1,14 @@
 /**
- * On-chain verification links for Midnight networks.
- * Official community explorer partnership (Midnight Foundation):
- * - Preview: https://preview.midnightexplorer.com
- * - Preprod: https://preprod.midnightexplorer.com
+ * On-chain verification links for Midnight Preprod.
  */
 
-export type ExplorerNetwork = "preview" | "preprod" | "mainnet" | "undeployed";
+export type ExplorerNetwork = "preprod" | "undeployed";
 
-const EXPLORER_BASE: Record<Exclude<ExplorerNetwork, "undeployed">, string> = {
-  preview: "https://preview.midnightexplorer.com",
-  preprod: "https://preprod.midnightexplorer.com",
-  // Mainnet explorer host may change; keep preview pattern until brand hub updates.
-  mainnet: "https://midnightexplorer.com",
-};
+const PREPROD_EXPLORER_BASE = "https://preprod.midnightexplorer.com";
 
 export function explorerBaseUrl(network: ExplorerNetwork = "preprod"): string | null {
   if (network === "undeployed") return null;
-  return EXPLORER_BASE[network] ?? EXPLORER_BASE.preprod;
+  return PREPROD_EXPLORER_BASE;
 }
 
 /** Normalize hex for explorer paths (prefer 0x prefix). */
@@ -28,7 +20,7 @@ export function toExplorerHex(value: string): string {
 
 /**
  * Transaction detail page.
- * Example: https://preview.midnightexplorer.com/transactions/0xd5823d...
+ * Example: https://preprod.midnightexplorer.com/transactions/0xd5823d...
  */
 export function explorerTransactionUrl(
   txId: string | null | undefined,
@@ -42,7 +34,7 @@ export function explorerTransactionUrl(
 
 /**
  * Contract detail page.
- * Example: https://preview.midnightexplorer.com/contracts/05668a...
+ * Example: https://preprod.midnightexplorer.com/contracts/05668a...
  */
 export function explorerContractUrl(
   contractId: string | null | undefined,

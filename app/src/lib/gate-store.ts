@@ -2,7 +2,7 @@ export type GateRecord = {
   id: string;
   name: string;
   description: string;
-  network: "preview" | "preprod" | "mainnet" | "undeployed";
+  network: "preprod" | "undeployed";
   contractId: string | null;
   deploymentTxId: string | null;
   status: "draft" | "published";
@@ -60,10 +60,11 @@ export function formatContractId(value: string): string {
 
 /** Migrate any gate records that still store `0x...` contract ids. */
 function sanitizeGate(gate: GateRecord): GateRecord {
-  if (!gate.contractId) return gate;
+  const network: GateRecord["network"] = "preprod";
+  if (!gate.contractId) return { ...gate, network };
   const bare = normalizeContractId(gate.contractId);
-  if (bare === gate.contractId) return gate;
-  return { ...gate, contractId: bare || null };
+  if (bare === gate.contractId) return { ...gate, network };
+  return { ...gate, network, contractId: bare || null };
 }
 
 /**
@@ -151,7 +152,7 @@ export function restorePublishedGate(input: {
     id,
     name: (input.name?.trim() || previous.name || DEFAULT_GATE.name).slice(0, 80),
     description: (input.description?.trim() || previous.description || DEFAULT_GATE.description).slice(0, 500),
-    network: input.network ?? previous.network ?? "preprod",
+    network: "preprod",
     contractId,
     deploymentTxId: input.deploymentTxId ?? previous.deploymentTxId ?? null,
     status: "published",
@@ -175,10 +176,7 @@ export function resolveGate(params: GateSearchParams = {}): GateRecord {
     const fromStore = getGateByContractId(contractId);
     const name = params.name?.trim() || fromStore?.name || DEFAULT_GATE.name;
     const description = params.description?.trim() || fromStore?.description || DEFAULT_GATE.description;
-    const network =
-      params.network === "preprod" || params.network === "mainnet" || params.network === "preview" || params.network === "undeployed"
-        ? params.network
-        : fromStore?.network ?? "preprod";
+    const network = "preprod";
 
     const resolved: GateRecord = {
       id: fromStore?.id ?? gateParam ?? gateIdFromContract(contractId),
