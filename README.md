@@ -15,7 +15,7 @@ _Prove you're authorized — without revealing who you are._
 
 **Built for Midnight Moonshots Level 3 🚀**
 
-[🌐 Live Demo](https://vaultpassxbt.vercel.app/) •
+[🌐 Live Demo](#) •
 [🎥 Demo Video](#demo-video) •
 [📖 Documentation](#documentation) •
 [🏗 Architecture](#architecture) •
@@ -390,7 +390,7 @@ Grant Access
 ## Clone Repository
 
 ```bash
-git clone https://github.com/codeREDxbt/vaultpass.git
+git clone https://github.com/Rimanshu-Singh/Privora
 ```
 
 Rename folder if desired:
