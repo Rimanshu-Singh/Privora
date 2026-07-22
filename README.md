@@ -65,6 +65,37 @@
 | Initial product idea (1 short paragraph) drafted in README | ✅ **Passed** — see [Problem Statement](#-problem-statement) & [Solution](#-solution) |
 | Minimum 5 meaningful commits | ✅ **Passed** |
 
+## 📷 Level 1 Verification Screenshots
+
+### 1. Successful Compile Output (Circuits Listed)
+<img width="677" height="217" alt="Screenshot 2026-07-22 124239" src="https://github.com/user-attachments/assets/8ee81aff-9c14-4e65-96e6-423087682449" />
+
+
+### 2. Automated Test Suite Passing
+<img width="486" height="169" alt="Screenshot 2026-07-22 123954" src="https://github.com/user-attachments/assets/b71b9cdb-8fc5-46d3-9a80-b390b3c44db1" />
+
+
+### 3. Contract Deployed on Midnight Preview (Explorer Address Verification)
+<img width="2558" height="1314" alt="Screenshot 2026-07-22 025802" src="https://github.com/user-attachments/assets/5800f493-9812-4290-9ae6-c300b80cce4b" />
+
+
+* **Network**: Midnight Preview
+* **Deployment Method**: Contract deployed using the official Midnight Browser DApp Connector (Lace / 1AM Wallet) through the Admin Dashboard deployment flow.
+* **Contract Address**: [`0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
+
+---
+
+## 🔎 Explorer Verification
+
+| Resource | Link |
+| ----------- | ----------------------------------------------------- |
+| Explorer | [preview.midnightexplorer.com](https://preview.midnightexplorer.com) |
+| Contract | [preview.midnightexplorer.com/contracts/0xc9a0...6afb12](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
+
+The application automatically provides explorer links after deployment and verification.
+
+---
+
 **Submission Checklist**
 
 - [x] Public GitHub repository with a `README.md`
@@ -84,8 +115,21 @@
 | Lace wallet connect / disconnect implemented | ✅ **Passed** — Browser DApp Connector API, Lace & 1AM support |
 | Circuit called successfully from the frontend | ✅ **Passed** — `verify_access()` runs in local ZK prover, broadcast via contract wrapper |
 | An observable privacy behavior (something proven without being shown) | ✅ **Passed** — Merkle membership + nullifier check proven locally without revealing the secret credential |
-| Contract deployed to Preprod with a verifiable address | ✅ **Passed** — [`0xc9a0...6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
+| Contract deployed to Preprod with a verifiable address | ✅ **Passed** — [`0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
 | Minimum 8 meaningful commits | ✅ **Passed** |
+
+## 🎬 Demo Video
+
+[Add your demo video link here — Google Drive, YouTube, or similar]
+
+### What to Record (Under 2 Minutes)
+1. **Connect Lace wallet** — show the address appear on screen
+2. **Admin flow** — deploy a gate and enroll a credential hash
+3. **Navigate to Member Access page** — show the Public vs Private comparison
+4. **Click "Generate Proof"** — show the loading state during ZK proof generation
+5. **Show the on-chain result** — transaction hash and "Proved without revealing your input" label
+6. **Point out** that the raw secret credential was never shown in the UI or sent to the chain
+7. **Disconnect wallet** — show the UI reset to disconnected state
 
 **Submission Checklist**
 
@@ -370,18 +414,7 @@ Open `http://localhost:3000` in your browser.
 
 ---
 
-## 🎬 Demo Video
 
-[Add your demo video link here — Google Drive, YouTube, or similar]
-
-### What to Record (Under 2 Minutes)
-1. **Connect Lace wallet** — show the address appear on screen
-2. **Admin flow** — deploy a gate and enroll a credential hash
-3. **Navigate to Member Access page** — show the Public vs Private comparison
-4. **Click "Generate Proof"** — show the loading state during ZK proof generation
-5. **Show the on-chain result** — transaction hash and "Proved without revealing your input" label
-6. **Point out** that the raw secret credential was never shown in the UI or sent to the chain
-7. **Disconnect wallet** — show the UI reset to disconnected state
 
 ---
 
@@ -402,7 +435,6 @@ Privora/
 │   ├── lib/
 │   │   └── useMidnight.ts           ← Midnight.js SDK hook
 │   └── pages/
-<<<<<<< HEAD
 │
 ├── contracts/
 │   ├── src/
@@ -410,8 +442,6 @@ Privora/
 │   ├── tests/
 │   └── compiler/
 │
-=======
->>>>>>> 2ffe49895c20576d4682e5710f717987cc10429f
 ├── public/
 ├── .github/
 │   └── workflows/
@@ -432,33 +462,7 @@ Privora/
 
 ---
 
-## 📷 Level 1 Verification Screenshots
 
-### 1. Successful Compile Output (Circuits Listed)
-_[placeholder — add screenshot]_
-
-### 2. Automated Test Suite Passing
-_[placeholder — add screenshot]_
-
-### 3. Contract Deployed on Midnight Preview (Explorer Address Verification)
-_[placeholder — add screenshot]_
-
-* **Network**: Midnight Preview
-* **Deployment Method**: Contract deployed using the official Midnight Browser DApp Connector (Lace / 1AM Wallet) through the Admin Dashboard deployment flow.
-* **Contract Address**: [`0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12`](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
-
----
-
-## 🔎 Explorer Verification
-
-| Resource | Link |
-| ----------- | ----------------------------------------------------- |
-| Explorer | [preview.midnightexplorer.com](https://preview.midnightexplorer.com) |
-| Contract | [preview.midnightexplorer.com/contracts/0xc9a0...6afb12](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
-
-The application automatically provides explorer links after deployment and verification.
-
----
 
 ## 🧪 Testing
 
@@ -478,7 +482,8 @@ The test suite validates:
 > Testing uses mocked in-memory structures for fast iteration; end-to-end proof generation is verified separately via the browser proof server.
 
 ### Test Output
-_[placeholder — add screenshot of 3+ tests passing]_
+<img width="486" height="169" alt="Screenshot 2026-07-22 123954" src="https://github.com/user-attachments/assets/1956bef9-193a-4d3b-b7a1-ec9f3aebe2ca" />
+
 
 ---
 
