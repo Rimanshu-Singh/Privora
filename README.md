@@ -1,14 +1,12 @@
 <div align="center">
+
   <h1 align="center">🔐 Privora</h1>
   <h3>Privacy-First Zero-Knowledge Access Control on Midnight Network</h3>
   <p><i>Prove you're authorized — without revealing who you are.</i></p>
 
   <br />
   <img src="https://img.shields.io/badge/Midnight_Network-000000?style=for-the-badge" alt="Midnight Network" />
-  <img src="https://img.shields.io/badge/Compact_Language-7F3F98?style=for-the-badge" alt="Compact Language" />
   <img src="https://img.shields.io/badge/Next.js_15-black?style=for-the-badge&logo=next.js" alt="Next.js" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/TailwindCSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="TailwindCSS" />
   <img src="https://img.shields.io/badge/Lace_Wallet-7B68EE?style=for-the-badge" alt="Lace Wallet" />
   <img src="https://img.shields.io/badge/1AM_Wallet-FF5733?style=for-the-badge" alt="1AM Wallet" />
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
@@ -18,17 +16,19 @@
   <h3>
     🌐 <a href="#">Live Demo Website</a>
     &nbsp;&nbsp;•&nbsp;&nbsp;
-    🎬 <a href="#demo-video">Demo Video Walkthrough</a>
+    🎬 <a href="#-demo">Demo Video Walkthrough</a>
     &nbsp;&nbsp;•&nbsp;&nbsp;
     🏗 <a href="#-architecture">Architecture</a>
   </h3>
 
   <br />
-  <a href="#">
+  <a href="https://github.com/Rimanshu-Singh/Privora/actions/runs/29904557079">
     <img src="https://img.shields.io/badge/CI%2FCD-passing-brightgreen?style=for-the-badge" alt="CI/CD Pipeline Status" />
   </a>
 </div>
-
+<br />
+<img width="2534" height="1314" alt="image" src="https://github.com/user-attachments/assets/f24ed750-4d7c-4a84-8402-026a6d941047" />
+<br />
 <br />
 
 > Confidential, production-grade Zero-Knowledge access control gateway built on the Midnight Network. Privora lets users prove they are authorized to access a resource — without ever revealing their identity, wallet history, or the underlying credential.
@@ -108,7 +108,7 @@
 | Contract deployed to Preprod with a verifiable address | [0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9)|
 | Minimum 8 meaningful commits                                          |                                                                                               ✅ **Passed**                                                                                               |
 
-## 🎬 Demo Video
+## 🎬 Demo-Video
 
 [Watch the Privora Demo Video on Google Drive](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing)
 
