@@ -524,7 +524,7 @@ export class PrivoraClient {
       ]);
 
     setNetworkId(this.session.networkId);
-    const assetBaseUrl = new URL("/contract/vault_pass/", window.location.origin).toString();
+    const assetBaseUrl = new URL("/contract/privora/", window.location.origin).toString();
     const zkConfigProvider = new FetchZkConfigProvider(assetBaseUrl, window.fetch.bind(window));
     for (const circuitId of ["add_valid_credential", "verify_access"] as const) {
       try {
@@ -747,7 +747,7 @@ export class PrivoraClient {
     }
     const [{ Contract }, { CompiledContract }, { createUnprovenDeployTx }, { sampleSigningKey }] =
       await Promise.all([
-        import("../../public/contract/vault_pass/contract/index.js"),
+        import("../../public/contract/privora/contract/index.js"),
         import("@midnight-ntwrk/compact-js"),
         import("@midnight-ntwrk/midnight-js-contracts"),
         import("@midnight-ntwrk/compact-runtime"),
@@ -758,7 +758,7 @@ export class PrivoraClient {
       get_caller: () => [null, new Uint8Array(32)] as [null, Uint8Array],
     };
     const compiledContract = CompiledContract.make("Privora", Contract)
-      .pipe(CompiledContract.withWitnesses(witnesses), CompiledContract.withCompiledFileAssets("/contract/vault_pass"));
+      .pipe(CompiledContract.withWitnesses(witnesses), CompiledContract.withCompiledFileAssets("/contract/privora"));
     const publicKey = this.addresses?.shieldedCoinPublicKey ?? this.addresses?.coinPublicKey;
     if (!publicKey || !this.session) throw new Error("Wallet did not return an administrator key.");
     let adminKey: Uint8Array;
@@ -993,7 +993,7 @@ export class PrivoraClient {
     const chainAddress = toChainContractAddress(contractId);
 
     const [{ Contract }, { CompiledContract }, { createUnprovenCallTx }] = await Promise.all([
-      import("../../public/contract/vault_pass/contract/index.js"),
+      import("../../public/contract/privora/contract/index.js"),
       import("@midnight-ntwrk/compact-js"),
       import("@midnight-ntwrk/midnight-js-contracts"),
     ]);
@@ -1024,7 +1024,7 @@ export class PrivoraClient {
       get_caller: (context: { privateState: unknown }) => [context.privateState, callerBytes] as [unknown, Uint8Array],
     };
     const compiledContract = CompiledContract.make("Privora", Contract)
-      .pipe(CompiledContract.withWitnesses(witnesses), CompiledContract.withCompiledFileAssets("/contract/vault_pass"));
+      .pipe(CompiledContract.withWitnesses(witnesses), CompiledContract.withCompiledFileAssets("/contract/privora"));
 
     const sdkContractAddress = toChainContractAddress(chainAddress);
     providers.privateStateProvider.setContractAddress(sdkContractAddress);
@@ -1081,7 +1081,7 @@ export class PrivoraClient {
   } | null> {
     if (!this.session) throw new Error("WALLET_NOT_CONNECTED");
     const [{ ledger }, { ContractState }] = await Promise.all([
-      import("../../public/contract/vault_pass/contract/index.js"),
+      import("../../public/contract/privora/contract/index.js"),
       import("@midnight-ntwrk/compact-runtime"),
     ]);
     const query =
@@ -1126,7 +1126,7 @@ export class PrivoraClient {
     const chainAddress = toChainContractAddress(contractId);
 
     const [{ Contract }, { CompiledContract }, { createUnprovenCallTx }] = await Promise.all([
-      import("../../public/contract/vault_pass/contract/index.js"),
+      import("../../public/contract/privora/contract/index.js"),
       import("@midnight-ntwrk/compact-js"),
       import("@midnight-ntwrk/midnight-js-contracts"),
     ]);
@@ -1177,7 +1177,7 @@ export class PrivoraClient {
       get_caller: (context: { privateState: unknown }) => [context.privateState, callerBytes] as [unknown, Uint8Array],
     };
     const compiledContract = CompiledContract.make("Privora", Contract)
-      .pipe(CompiledContract.withWitnesses(witnesses), CompiledContract.withCompiledFileAssets("/contract/vault_pass"));
+      .pipe(CompiledContract.withWitnesses(witnesses), CompiledContract.withCompiledFileAssets("/contract/privora"));
 
     // Final assert: never pass 0x into createUnprovenCallTx (SDK TypeError).
     const sdkContractAddress = toChainContractAddress(chainAddress);

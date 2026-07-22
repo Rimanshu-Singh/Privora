@@ -1,7 +1,7 @@
 /**
  * Behavioral mock tests for Privora access rules.
  *
- * These tests mirror the *intended* logic of `vault_pass.compact`
+ * These tests mirror the *intended* logic of `privora.compact`
  * (allowlist membership + nullifier replay protection + admin-only enroll)
  * using in-memory Sets. They are NOT Compact/testkit circuit proofs and do
  * not exercise the ZK prover or on-chain WASM runtime.
@@ -11,7 +11,7 @@
  */
 import { describe, expect, it, beforeEach } from '@jest/globals';
 
-/** Domain tags aligned with vault_pass.compact pad/hash prefixes (conceptual). */
+/** Domain tags aligned with privora.compact pad/hash prefixes (conceptual). */
 const DOMAIN = {
   credential: 'vault:credential',
   nullifier: 'vault:nullifier',

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "compile": "wsl bash -lc \"cd /mnt/d/web3_project/privora/contracts && compact compile src/vault_pass.compact src/managed\" && node scripts/sync-artifacts.mjs",
+    "compile": "node scripts/compile-contract.mjs",
     "sync:artifacts": "node scripts/sync-artifacts.mjs",
     "test": "jest",
     "build": "node -e \"console.log('contracts: Compact artifacts are prebuilt under src/managed (no CI compile step)')\""

@@ -38,7 +38,7 @@ Deploy signing material and gate metadata are stored best-effort in **localStora
 
 ### 4. Tests
 
-`contracts/tests/vault_pass.test.ts` are **behavioral mocks** of circuit rules (Sets + assertions). They do not run Compact/testkit or the ZK prover. See README “Test instructions”.
+`contracts/tests/privora.test.ts` are **behavioral mocks** of circuit rules (Sets + assertions). They do not run Compact/testkit or the ZK prover. See README “Test instructions”.
 
 ## Privacy surface (observer)
 

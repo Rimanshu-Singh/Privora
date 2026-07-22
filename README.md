@@ -310,7 +310,7 @@ privora/
 │
 ├── contracts/
 │   ├── src/
-│   │     vault_pass.compact
+│   │     privora.compact
 │   ├── tests/
 │   └── compiler/
 │

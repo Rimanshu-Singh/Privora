@@ -5,7 +5,7 @@ import { resolve } from "node:path";
 const contractsRoot = resolve(import.meta.dirname, "..");
 const repoRoot = resolve(contractsRoot, "..");
 const source = resolve(contractsRoot, "src", "managed");
-const target = resolve(repoRoot, "app", "public", "contract", "vault_pass");
+const target = resolve(repoRoot, "app", "public", "contract", "privora");
 
 const required = [
   "contract/index.js",
