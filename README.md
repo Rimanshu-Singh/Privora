@@ -36,24 +36,102 @@
 **Privora** replaces traditional wallet-based allowlists and token-gated access with a Zero-Knowledge Merkle membership proof. Members prove they hold a valid, enrolled credential and generate a single-use nullifier locally in their browser — nothing sensitive ever touches the chain. Built for the **First Quarter (Level 3)** challenge as part of the **RiseIn & Midnight Foundation "New Moon to Full: Monthly Moonshots on Midnight" Program 2026**.
 
 ---
-
+## 🌒 Moonshots Level 1 → 3 — Requirements & Submission Checklist
 ## 🌐 Live Demo
-
 [https://privora-new.vercel.app](https://privora-new.vercel.app)
 
 ---
 
-## 📋 Contract Address
-
+## 📋 Quick Links & CheckList
 | Network     | Address                                                              |
 | ----------- | -------------------------------------------------------------------- |
-| **Preprod** | `<PREPROD_CONTRACT_ADDRESS_PENDING>` |
+| **🌐Live Demo** | [https://privora-new.vercel.app](https://privora-new.vercel.app) |
+| **Preprod** | `0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9` |
+| **Demo Video** |[Watch the Privora Demo Video on Google Drive](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing) |
+| CI/CD pipeline running (workflow file + passing runs)                 |               ✅ **Passed**                |
 
-> Preprod deployment pending. Verify the new address on [Midnight Preprod Explorer](https://preprod.midnightexplorer.com) after deployment.
+> Preprod deployment pending. Verify the new address on [Midnight Preprod Explorer](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9) 
+
+---
+## 🔎 Explorer Verification (Preview NetWork)
+
+| Resource | Link                                                                                                                                                                        |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Explorer | [Midnight Preprod Explorer](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9)                                                                                                        |
+| Contract | [0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9) |
+### 🌓 Level 3 — First Quarter
+
+**Chosen Idea:** _Private Allowlist Access_ — prove membership without revealing identity.
+
+| Requirement                                                           |                   Status                   |
+| --------------------------------------------------------------------- | :----------------------------------------: |
+| Fully functional dApp that meaningfully uses Midnight's privacy model |               ✅ **Passed**                |
+| Minimum 3 tests passing                                               |  ✅ **Passed**   |
+| CI/CD pipeline running (workflow file + passing runs)                 |               ✅ **Passed**                |
+| Approved idea submitted from the provided idea list                   | ✅ **Passed** — _Private Allowlist Access_ |
+| Minimum 10 meaningful commits                                         |               ✅ **Passed**                |
+
+
+
+### 1. Automated Test Suite Passing
+
+<img width="486" height="169" alt="Screenshot 2026-07-22 123954" src="https://github.com/user-attachments/assets/b71b9cdb-8fc5-46d3-9a80-b390b3c44db1" />
+
+### 2. Deployed on Prepod Network
+<img width="2544" height="1321" alt="Screenshot 2026-07-22 135748" src="https://github.com/user-attachments/assets/aca7ee5c-7e34-41ca-a7fe-adc8c38a265b" />
+
+### 3. CI & CD Running 
+<img width="2532" height="819" alt="image" src="https://github.com/user-attachments/assets/93bc8cb1-25d8-40be-9cff-4fb64ef0a91e" />
+
+### 4. Commit Over 16 meaningful commits   ✅ **Passed**  
+
+**Submission Checklist**
+
+- [x] Public GitHub repository with complete README
+- [x] Live demo link
+- [x] Screenshot: test output (3+ tests passing)
+- [x] CI/CD badge or workflow file with passing runs
+- [x] Demo video (1 minute) showing full functionality
+- [x] README "privacy model" section: what an observer can and cannot learn
+- [x] Product proposal (from the idea list) submitted for approval
+- [x] Minimum 10 meaningful commits
 
 ---
 
-## 🌒 Moonshots Level 1 → 3 — Requirements & Submission Checklist
+### 🌒 Level 2 — Waxing Crescent
+
+| Requirement                                                           |                                                                                                  Status                                                                                                   |
+| --------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| Lace wallet connect / disconnect implemented                          |                                                                      ✅ **Passed** — Browser DApp Connector API, Lace & 1AM support                                                                       |
+| Circuit called successfully from the frontend                         |                                                         ✅ **Passed** — `verify_access()` runs in local ZK prover, broadcast via contract wrapper                                                         |
+| An observable privacy behavior (something proven without being shown) |                                                ✅ **Passed** — Merkle membership + nullifier check proven locally without revealing the secret credential                                                 |
+| Contract deployed to Preprod with a verifiable address | [0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9)|
+| Minimum 8 meaningful commits                                          |                                                                                               ✅ **Passed**                                                                                               |
+
+## 🎬 Demo Video
+
+[Watch the Privora Demo Video on Google Drive](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing)
+
+### What to Record (Under 2 Minutes)
+
+1. **Connect Lace wallet** — show the address appear on screen
+2. **Admin flow** — deploy a gate and enroll a credential hash
+3. **Navigate to Member Access page** — show the Public vs Private comparison
+4. **Click "Generate Proof"** — show the loading state during ZK proof generation
+5. **Show the on-chain result** — transaction hash and "Proved without revealing your input" label
+6. **Point out** that the raw secret credential was never shown in the UI or sent to the chain
+7. **Disconnect wallet** — show the UI reset to disconnected state
+
+**Submission Checklist**
+
+- [x] Public GitHub repository with README
+- [x] Live demo link (Vercel, Netlify, or similar)
+- [x] Deployed Preprod contract address 
+- [x] Demo video: wallet connect + a successful circuit call
+- [x] README documenting the privacy claim
+- [x] Minimum 8 meaningful commits
+
+---
 
 ### 🌑 Level 1 — New Moon
 
@@ -62,7 +140,7 @@
 | Toolchain installed and contract compiles via `compact compile`      |                                                                     ✅ **Passed**                                                                      |
 | Passing test suite                                                   |                                                                     ✅ **Passed**                                                                      |
 | Generated `managed/` directory present (circuits + keys)             |                                                                     ✅ **Passed**                                                                      |
-| Contract deployed to Preprod with a visible contract address | Pending - deploy from the Admin Dashboard |
+| Contract deployed to preview with a visible contract address | [0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
 | Initial product idea (1 short paragraph) drafted in README           |                                 ✅ **Passed** — see [Problem Statement](#-problem-statement) & [Solution](#-solution)                                  |
 | Minimum 5 meaningful commits                                         |                                                                     ✅ **Passed**                                                                      |
 
@@ -82,16 +160,16 @@
 
 - **Network**: Midnight Preprod
 - **Deployment Method**: Contract deployed using the official Midnight Browser DApp Connector (Lace / 1AM Wallet) through the Admin Dashboard deployment flow.
-- **Contract Address**: [`<PREPROD_CONTRACT_ADDRESS_PENDING>`](https://preprod.midnightexplorer.com/contracts/<PREPROD_CONTRACT_ADDRESS_PENDING>)
+- **Contract Address**:  [0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
 
 ---
 
-## 🔎 Explorer Verification
+## 🔎 Explorer Verification (Preview NetWork)
 
 | Resource | Link                                                                                                                                                                        |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Explorer | [preprod.midnightexplorer.com](https://preprod.midnightexplorer.com)                                                                                                        |
-| Contract | [preprod.midnightexplorer.com/contracts/<PREPROD_CONTRACT_ADDRESS_PENDING>](https://preprod.midnightexplorer.com/contracts/<PREPROD_CONTRACT_ADDRESS_PENDING>) |
+| Explorer | [Explore](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)                                                                                                        |
+| Contract | [0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
 
 The application automatically provides explorer links after deployment and verification.
 
@@ -106,66 +184,6 @@ The application automatically provides explorer links after deployment and verif
 - [x] README section explaining public state vs private witness
 - [x] Initial product idea paragraph
 - [x] Minimum 5 meaningful commits
-
----
-
-### 🌒 Level 2 — Waxing Crescent
-
-| Requirement                                                           |                                                                                                  Status                                                                                                   |
-| --------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Lace wallet connect / disconnect implemented                          |                                                                      ✅ **Passed** — Browser DApp Connector API, Lace & 1AM support                                                                       |
-| Circuit called successfully from the frontend                         |                                                         ✅ **Passed** — `verify_access()` runs in local ZK prover, broadcast via contract wrapper                                                         |
-| An observable privacy behavior (something proven without being shown) |                                                ✅ **Passed** — Merkle membership + nullifier check proven locally without revealing the secret credential                                                 |
-| Contract deployed to Preprod with a verifiable address | Pending - no Preprod address has been verified yet |
-| Minimum 8 meaningful commits                                          |                                                                                               ✅ **Passed**                                                                                               |
-
-## 🎬 Demo Video
-
-[Add your demo video link here — Google Drive, YouTube, or similar]
-
-### What to Record (Under 2 Minutes)
-
-1. **Connect Lace wallet** — show the address appear on screen
-2. **Admin flow** — deploy a gate and enroll a credential hash
-3. **Navigate to Member Access page** — show the Public vs Private comparison
-4. **Click "Generate Proof"** — show the loading state during ZK proof generation
-5. **Show the on-chain result** — transaction hash and "Proved without revealing your input" label
-6. **Point out** that the raw secret credential was never shown in the UI or sent to the chain
-7. **Disconnect wallet** — show the UI reset to disconnected state
-
-**Submission Checklist**
-
-- [x] Public GitHub repository with README
-- [x] Live demo link (Vercel, Netlify, or similar)
-- [ ] Deployed Preprod contract address (pending manual deployment)
-- [x] Demo video: wallet connect + a successful circuit call
-- [x] README documenting the privacy claim
-- [x] Minimum 8 meaningful commits
-
----
-
-### 🌓 Level 3 — First Quarter
-
-**Chosen Idea:** _Private Allowlist Access_ — prove membership without revealing identity.
-
-| Requirement                                                           |                   Status                   |
-| --------------------------------------------------------------------- | :----------------------------------------: |
-| Fully functional dApp that meaningfully uses Midnight's privacy model |               ✅ **Passed**                |
-| Minimum 3 tests passing                                               |  ✅ **Passed** — see [Testing](#-testing)  |
-| CI/CD pipeline running (workflow file + passing runs)                 |               ✅ **Passed**                |
-| Approved idea submitted from the provided idea list                   | ✅ **Passed** — _Private Allowlist Access_ |
-| Minimum 10 meaningful commits                                         |               ✅ **Passed**                |
-
-**Submission Checklist**
-
-- [x] Public GitHub repository with complete README
-- [x] Live demo link
-- [x] Screenshot: test output (3+ tests passing)
-- [x] CI/CD badge or workflow file with passing runs
-- [x] Demo video (1 minute) showing full functionality
-- [x] README "privacy model" section: what an observer can and cannot learn
-- [x] Product proposal (from the idea list) submitted for approval
-- [x] Minimum 10 meaningful commits
 
 ---
 
