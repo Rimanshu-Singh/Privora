@@ -133,59 +133,7 @@
 
 ---
 
-### 🌑 Level 1 — New Moon
 
-| Requirement                                                          |                                                                         Status                                                                         |
-| -------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Toolchain installed and contract compiles via `compact compile`      |                                                                     ✅ **Passed**                                                                      |
-| Passing test suite                                                   |                                                                     ✅ **Passed**                                                                      |
-| Generated `managed/` directory present (circuits + keys)             |                                                                     ✅ **Passed**                                                                      |
-| Contract deployed to preview with a visible contract address | [0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
-| Initial product idea (1 short paragraph) drafted in README           |                                 ✅ **Passed** — see [Problem Statement](#-problem-statement) & [Solution](#-solution)                                  |
-| Minimum 5 meaningful commits                                         |                                                                     ✅ **Passed**                                                                      |
-
-## 📷 Level 1 Verification Screenshots
-
-### 1. Successful Compile Output (Circuits Listed)
-
-<img width="677" height="217" alt="Screenshot 2026-07-22 124239" src="https://github.com/user-attachments/assets/8ee81aff-9c14-4e65-96e6-423087682449" />
-
-### 2. Automated Test Suite Passing
-
-<img width="486" height="169" alt="Screenshot 2026-07-22 123954" src="https://github.com/user-attachments/assets/b71b9cdb-8fc5-46d3-9a80-b390b3c44db1" />
-
-### 3. Contract Deployed on Midnight Preprod (Explorer Address Verification)
-
-<img width="2558" height="1314" alt="Screenshot 2026-07-22 025802" src="https://github.com/user-attachments/assets/5800f493-9812-4290-9ae6-c300b80cce4b" />
-
-- **Network**: Midnight Preprod
-- **Deployment Method**: Contract deployed using the official Midnight Browser DApp Connector (Lace / 1AM Wallet) through the Admin Dashboard deployment flow.
-- **Contract Address**:  [0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)
-
----
-
-## 🔎 Explorer Verification (Preview NetWork)
-
-| Resource | Link                                                                                                                                                                        |
-| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Explorer | [Explore](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12)                                                                                                        |
-| Contract | [0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12](https://preview.midnightexplorer.com/contracts/0xc9a08b51988f5ab836e62e608b2e04688f494ab1708c57af2f024b242d6afb12) |
-
-The application automatically provides explorer links after deployment and verification.
-
----
-
-**Submission Checklist**
-
-- [x] Public GitHub repository with a `README.md`
-- [x] Setup instructions (how to run locally)
-- [x] Screenshot: successful compile output (circuits listed)
-- [x] Screenshot: contract deployed with address shown
-- [x] README section explaining public state vs private witness
-- [x] Initial product idea paragraph
-- [x] Minimum 5 meaningful commits
-
----
 
 ## 💡 What This Does
 
