@@ -50,7 +50,7 @@
 | **Demo Video** |[Watch the Privora Demo Video on Google Drive](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing) |
 | CI/CD pipeline running (workflow file + passing runs)                 |               ✅ **Passed**                |
 
-> Preprod deployment pending. Verify the new address on [Midnight Preprod Explorer](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9) 
+> Preprod deployed. Verify the new address on [Midnight Preprod Explorer](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9) 
 
 ---
 ## 🔎 Explorer Verification (Preview NetWork)
