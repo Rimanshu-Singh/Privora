@@ -14,11 +14,11 @@
 <br /><br />
 
   <h3>
-    🌐 <a href="#">Live Demo Website</a>
+    🌐 <a href="https://github.com/Rimanshu-Singh/Privora/edit/main/README.md#architecture">Live Demo Website</a>
     &nbsp;&nbsp;•&nbsp;&nbsp;
-    🎬 <a href="#-demo">Demo Video Walkthrough</a>
+    🎬 <a href="https://github.com/Rimanshu-Singh/Privora/edit/main/README.md#architecture">Demo Video Walkthrough</a>
     &nbsp;&nbsp;•&nbsp;&nbsp;
-    🏗 <a href="#-architecture">Architecture</a>
+    🏗 <a href="https://github.com/Rimanshu-Singh/Privora/edit/main/README.md#architecture">Architecture</a>
   </h3>
 
   <br />
@@ -133,6 +133,446 @@
 
 ---
 
+# Architecture
+
+Privora is organized as a small monorepo containing the Next.js frontend, Compact smart contract, generated Zero Knowledge artifacts, contract tests, CI workflow, and project documentation.
+
+The architecture separates wallet interaction, frontend access control, Midnight.js contract integration, Compact circuit logic, and protected-resource access.
+
+---
+
+## Full Project Structure
+
+```text
+PRIVORA/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+│
+├── app/
+│   ├── public/
+│   │   ├── contract/
+│   │   │   └── Privora/
+│   │   │       ├── compiler/
+│   │   │       │   └── contract-info.json
+│   │   │       ├── contract/
+│   │   │       │   ├── index.d.ts
+│   │   │       │   ├── index.js
+│   │   │       │   └── index.js.map
+│   │   │       ├── keys/
+│   │   │       │   ├── add_valid_credential.prover
+│   │   │       │   ├── add_valid_credential.verifier
+│   │   │       │   ├── verify_access.prover
+│   │   │       │   └── verify_access.verifier
+│   │   │       └── zkir/
+│   │   │           ├── add_valid_credential.bzkir
+│   │   │           ├── add_valid_credential.zkir
+│   │   │           ├── verify_access.bzkir
+│   │   │           └── verify_access.zkir
+│   │   ├── logo.png
+│   │   └── logo.svg
+│   │
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── admin/
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── loading.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── gate/
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── loading.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── vault/
+│   │   │   │   ├── loading.tsx
+│   │   │   │   └── page.tsx
+│   │   │   ├── globals.css
+│   │   │   ├── icon.svg
+│   │   │   ├── layout.tsx
+│   │   │   ├── loading.tsx
+│   │   │   └── page.tsx
+│   │   │
+│   │   ├── components/
+│   │   │   ├── ui/
+│   │   │   │   ├── LoadingState.tsx
+│   │   │   │   ├── PageShell.tsx
+│   │   │   │   ├── ProgressPanel.tsx
+│   │   │   │   ├── ProofReference.tsx
+│   │   │   │   └── StatusBanner.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Navigation.tsx
+│   │   │   ├── Splash.tsx
+│   │   │   ├── WalletConnectModal.tsx
+│   │   │   └── WalletSessionBar.tsx
+│   │   │
+│   │   ├── hooks/
+│   │   │   └── useGate.ts
+│   │   │
+│   │   └── lib/
+│   │       ├── access-session.ts
+│   │       ├── explorer.ts
+│   │       ├── gate-store.ts
+│   │       ├── midnight-client.ts
+│   │       ├── transaction-stages.ts
+│   │       └── ws-shim.js
+│   │
+│   ├── eslint.config.mjs
+│   ├── next.config.ts
+│   ├── package.json
+│   ├── postcss.config.mjs
+│   └── tsconfig.json
+│
+├── contracts/
+│   ├── scripts/
+│   │   ├── compile-contract.mjs
+│   │   └── sync-artifacts.mjs
+│   │
+│   ├── src/
+│   │   ├── managed/
+│   │   │   ├── compiler/
+│   │   │   ├── contract/
+│   │   │   ├── keys/
+│   │   │   ├── vault_pass/
+│   │   │   └── zkir/
+│   │   └── privora.compact
+│   │
+│   ├── tests/
+│   │   └── privora.test.ts
+│   │
+│   ├── jest.config.js
+│   └── package.json
+│
+├── Documents/
+│   ├── Architecture.md
+│   ├── midnight_level3_privora_plan.md
+│   ├── PLAN.md
+│   ├── PROPOSAL.md
+│   └── TRUST_MODEL.md
+│
+├── .env.example
+├── .gitignore
+├── package-lock.json
+├── package.json
+├── README.md
+└── vercel.json
+```
+
+> **Important:** `PROPOSAL.md` must be present at the repository root for direct judge verification. A documentation copy may also remain inside `Documents/`.
+
+---
+
+## Frontend Structure
+
+The frontend is located in the `app/` directory and is built with Next.js, React, TypeScript, Tailwind CSS, Midnight.js, Compact runtime, and the Midnight wallet APIs.
+
+```text
+app/
+├── public/
+│   └── contract/
+│       └── Privora/
+│           ├── compiler/
+│           ├── contract/
+│           ├── keys/
+│           └── zkir/
+│
+├── src/
+│   ├── app/
+│   │   ├── admin/
+│   │   ├── gate/
+│   │   ├── vault/
+│   │   ├── layout.tsx
+│   │   ├── loading.tsx
+│   │   └── page.tsx
+│   │
+│   ├── components/
+│   │   ├── ui/
+│   │   ├── WalletConnectModal.tsx
+│   │   └── WalletSessionBar.tsx
+│   │
+│   ├── hooks/
+│   │   └── useGate.ts
+│   │
+│   └── lib/
+│       ├── access-session.ts
+│       ├── explorer.ts
+│       ├── gate-store.ts
+│       ├── midnight-client.ts
+│       ├── transaction-stages.ts
+│       └── ws-shim.js
+│
+├── package.json
+├── next.config.ts
+├── tsconfig.json
+└── eslint.config.mjs
+```
+
+### Frontend Responsibilities
+
+| Path                                        | Responsibility                                                 |
+| ------------------------------------------- | -------------------------------------------------------------- |
+| `app/src/app/page.tsx`                      | Main Privora landing page                                      |
+| `app/src/app/admin/page.tsx`                | Credential and gate administration                             |
+| `app/src/app/gate/page.tsx`                 | Private credential verification interface                      |
+| `app/src/app/vault/page.tsx`                | Protected resource unlocked after verification                 |
+| `app/src/components/WalletConnectModal.tsx` | Wallet detection, selection, connection, and connection errors |
+| `app/src/components/WalletSessionBar.tsx`   | Connected address, network status, and wallet disconnect       |
+| `app/src/hooks/useGate.ts`                  | Frontend verification and circuit-call state                   |
+| `app/src/lib/midnight-client.ts`            | Midnight.js providers and contract interaction                 |
+| `app/src/lib/access-session.ts`             | Local verified-access session                                  |
+| `app/src/lib/transaction-stages.ts`         | Proof and transaction progress stages                          |
+| `app/src/components/ui/LoadingState.tsx`    | Loading state during contract operations                       |
+| `app/src/components/ui/ProgressPanel.tsx`   | Proof-generation and transaction progress                      |
+| `app/src/components/ui/StatusBanner.tsx`    | Success and error feedback                                     |
+| `app/public/contract/Privora/`              | Browser-accessible contract and ZK artifacts                   |
+
+---
+
+## Frontend `package.json`
+
+The Midnight.js and wallet dependencies are directly available in:
+
+```text
+app/package.json
+```
+
+```json
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@midnight-ntwrk/compact-js": "^2.5.1",
+    "@midnight-ntwrk/compact-runtime": "^0.16.0",
+    "@midnight-ntwrk/dapp-connector-api": "^4.0.1",
+    "@midnight-ntwrk/midnight-js": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-contracts": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-fetch-zk-config-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-http-client-proof-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-indexer-public-data-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-level-private-state-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-network-id": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-types": "^4.1.1",
+    "@midnight-ntwrk/wallet-api": "^5.0.0",
+    "@midnight-ntwrk/wallet-sdk-address-format": "^3.1.2",
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^1.24.0",
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
+```
+
+---
+
+## Contract Structure
+
+The Compact contract, generated bindings, proving artifacts, tests, and build scripts are located inside `contracts/`.
+
+```text
+contracts/
+├── scripts/
+│   ├── compile-contract.mjs
+│   └── sync-artifacts.mjs
+│
+├── src/
+│   ├── managed/
+│   │   ├── compiler/
+│   │   │   └── contract-info.json
+│   │   ├── contract/
+│   │   │   ├── index.d.ts
+│   │   │   ├── index.js
+│   │   │   └── index.js.map
+│   │   ├── keys/
+│   │   │   ├── add_valid_credential.prover
+│   │   │   ├── add_valid_credential.verifier
+│   │   │   ├── verify_access.prover
+│   │   │   └── verify_access.verifier
+│   │   ├── vault_pass/
+│   │   └── zkir/
+│   │       ├── add_valid_credential.bzkir
+│   │       ├── add_valid_credential.zkir
+│   │       ├── verify_access.bzkir
+│   │       └── verify_access.zkir
+│   │
+│   └── privora.compact
+│
+├── tests/
+│   └── privora.test.ts
+│
+├── jest.config.js
+└── package.json
+```
+
+### Contract Responsibilities
+
+| Path                                     | Responsibility                               |
+| ---------------------------------------- | -------------------------------------------- |
+| `contracts/src/privora.compact`          | Main Privora Compact contract                |
+| `contracts/src/managed/contract/`        | Generated JavaScript contract bindings       |
+| `contracts/src/managed/keys/`            | Generated prover and verifier keys           |
+| `contracts/src/managed/zkir/`            | Generated ZKIR and BZKIR files               |
+| `contracts/scripts/compile-contract.mjs` | Compiles the Compact contract                |
+| `contracts/scripts/sync-artifacts.mjs`   | Copies generated artifacts into the frontend |
+| `contracts/tests/privora.test.ts`        | Contract circuit tests                       |
+| `contracts/jest.config.js`               | Contract test configuration                  |
+
+The generated artifacts are synchronized from:
+
+```text
+contracts/src/managed/
+```
+
+to:
+
+```text
+app/public/contract/Privora/
+```
+
+This allows the frontend ZK configuration provider to load the contract bindings, prover keys, verifier keys, and ZKIR artifacts.
+
+---
+
+## Documents Structure
+
+```text
+Documents/
+├── Architecture.md
+├── midnight_level3_privora_plan.md
+├── PLAN.md
+├── PROPOSAL.md
+└── TRUST_MODEL.md
+```
+
+| Document                                    | Purpose                                                         |
+| ------------------------------------------- | --------------------------------------------------------------- |
+| `PROPOSAL.md`                               | Product idea, problem, implementation, and Zero Knowledge usage |
+| `Documents/PLAN.md`                         | Development plan and implementation milestones                  |
+| `Documents/TRUST_MODEL.md`                  | Public/private data boundaries and security assumptions         |
+| `Documents/Architecture.md`               | Architecture & Full Details documentation                      |
+| `Documents/midnight_level3_privora_plan.md` | Original planning document                              |
+
+The mandatory product proposal is also placed at the repository root:
+
+```text
+PROPOSAL.md
+```
+
+---
+
+## Mandatory Implementation Verification
+
+| Mandatory requirement           | Direct evidence                                            |
+| ------------------------------- | ---------------------------------------------------------- |
+| Midnight.js SDK dependency      | `app/package.json`                                         |
+| Midnight.js source integration  | `app/src/lib/midnight-client.ts`                           |
+| Contract call from frontend     | `app/src/hooks/useGate.ts`                                 |
+| Verification button/UI          | `app/src/app/gate/page.tsx`                                |
+| Proof loading state             | `app/src/components/ui/LoadingState.tsx`                   |
+| Proof progress state            | `app/src/components/ui/ProgressPanel.tsx`                  |
+| Success/error state             | `app/src/components/ui/StatusBanner.tsx`                   |
+| Wallet selection and connect    | `app/src/components/WalletConnectModal.tsx`                |
+| Address and disconnect UI       | `app/src/components/WalletSessionBar.tsx`                  |
+| Lace/compatible wallet API      | `@midnight-ntwrk/dapp-connector-api` in `app/package.json` |
+| Compact source                  | `contracts/src/privora.compact`                            |
+| Generated contract binding      | `contracts/src/managed/contract/index.js`                  |
+| Browser contract binding        | `app/public/contract/Privora/contract/index.js`            |
+| `verify_access` prover/verifier | `app/public/contract/Privora/keys/`                        |
+| `verify_access` ZKIR            | `app/public/contract/Privora/zkir/`                        |
+| Contract tests                  | `contracts/tests/privora.test.ts`                          |
+| Product plan                    | `Documents/PLAN.md`                                        |
+| Privacy/trust model             | `Documents/TRUST_MODEL.md`                                 |
+| Product proposal                | `PROPOSAL.md` at Documents/PROPOSAL.md root                           |
+
+---
+
+## End-to-End Verification Flow
+
+```text
+1. User opens Privora
+        ↓
+2. User clicks Connect Wallet
+        ↓
+3. WalletConnectModal detects Lace or another compatible wallet
+        ↓
+4. User approves the connection
+        ↓
+5. WalletSessionBar displays the connected address
+        ↓
+6. User opens the Gate page
+        ↓
+7. User provides the credential secret locally
+        ↓
+8. User clicks Verify Access
+        ↓
+9. useGate.ts starts the verification operation
+        ↓
+10. midnight-client.ts initializes providers and contract access
+        ↓
+11. verify_access receives the private witness
+        ↓
+12. The Zero Knowledge proof is generated
+        ↓
+13. The transaction is balanced and submitted through the wallet
+        ↓
+14. The contract checks credential validity and proof reuse
+        ↓
+15. The frontend displays the confirmed result
+        ↓
+16. A local access session is created
+        ↓
+17. The protected Vault resource is unlocked
+        ↓
+18. User may disconnect through WalletSessionBar
+```
+
+---
+
+## Architecture Summary
+
+```text
+WalletConnectModal
+        ↓
+WalletSessionBar
+        ↓
+Gate verification interface
+        ↓
+useGate.ts
+        ↓
+midnight-client.ts
+        ↓
+Midnight.js providers
+        ↓
+Privora Compact contract
+        ↓
+verify_access circuit
+        ↓
+Zero Knowledge proof
+        ↓
+Confirmed access result
+        ↓
+Local access session
+        ↓
+Protected Vault
+```
+
+All frontend, wallet, Midnight.js, contract, proof-artifact, testing, and documentation files are included in the repository so reviewers can verify the implementation directly.
 
 
 ## 💡 What This Does
