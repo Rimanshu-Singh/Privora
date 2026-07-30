@@ -58,7 +58,7 @@
 | **🌐Live Demo** | [https://privora-new.vercel.app](https://privora-new.vercel.app) |
 | **Preprod** | `0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9` |
 | **Demo Video** |[Watch the Privora Demo Video on Google Drive](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing) |
-| CI/CD pipeline running (workflow file + passing runs)                 |               ✅ **Passed**                |
+| CI/CD pipeline running (workflow file + passing runs)                 |               ✅ **Passed**   [5ec3709](https://github.com/Rimanshu-Singh/Privora/actions/runs/30528466593)             |
 
 > Preprod deployed. Verify the new address on [Midnight Preprod Explorer](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9) 
 
@@ -90,8 +90,9 @@
 ### 2. Deployed on Prepod Network
 <img width="2544" height="1321" alt="Screenshot 2026-07-22 135748" src="https://github.com/user-attachments/assets/aca7ee5c-7e34-41ca-a7fe-adc8c38a265b" />
 
-### 3. CI & CD Running 
-<img width="2532" height="819" alt="image" src="https://github.com/user-attachments/assets/93bc8cb1-25d8-40be-9cff-4fb64ef0a91e" />
+### 3. CI & CD Running (both smartcontract and frontend works)
+
+<img width="1902" height="783" alt="image" src="https://github.com/user-attachments/assets/6dbc54a7-ce0e-46fc-a483-ecdfda078f4c" />
 
 ### 4. Commit Over 16 meaningful commits   ✅ **Passed**  
 
