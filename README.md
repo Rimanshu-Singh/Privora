@@ -13,15 +13,8 @@
 
 <br /><br />
 
-  <h3>
-    🌐 <a href="https://github.com/Rimanshu-Singh/Privora/edit/main/README.md#architecture">Live Demo Website</a>
-    &nbsp;&nbsp;•&nbsp;&nbsp;
-    🎬 <a href="https://github.com/Rimanshu-Singh/Privora/edit/main/README.md#architecture">Demo Video Walkthrough</a>
-    &nbsp;&nbsp;•&nbsp;&nbsp;
-    🏗 <a href="https://github.com/Rimanshu-Singh/Privora/edit/main/README.md#architecture">Architecture</a>
-  </h3>
-
-  <br />
+  
+  
   <a href="https://github.com/Rimanshu-Singh/Privora/actions/runs/29904557079">
     <img src="https://img.shields.io/badge/CI%2FCD-passing-brightgreen?style=for-the-badge" alt="CI/CD Pipeline Status" />
   </a>
@@ -49,7 +42,7 @@
 ## 🌒 Moonshots Level 1 → 3 — Requirements & Submission Checklist
 ## 🌐 Live Demo
 [https://privora-new.vercel.app](https://privora-new.vercel.app)
-
+## 🎥 Demo Video : https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing
 ---
 
 ## 📋 Quick Links & CheckList
