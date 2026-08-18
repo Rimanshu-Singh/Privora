@@ -42,12 +42,49 @@
 ## 🌒 Moonshots Level 1 → 3 — Requirements & Submission Checklist
 ## 🌐 Live Demo
 [https://privora-new.vercel.app](https://privora-new.vercel.app)
-## 🎥 Demo Video : https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing
+## 📱 Privora in Action
+
+<table align="center" >
+  <tr>
+    <td align="center">
+      <img
+        src="https://github.com/user-attachments/assets/69c74e7a-cd70-421e-937d-b82c794a922b"
+        alt="Privora Demo 1"
+        width="220"
+        hspace="15"
+      />
+    </td>
+    <td align="center">
+      <img
+        src="https://github.com/user-attachments/assets/0e665537-2608-4e57-91e2-32bd1368e49e"
+        alt="Privora Demo 2"
+        width="220"
+        hspace="15"
+      />
+    </td>
+    <td align="center">
+      <img
+        src="https://github.com/user-attachments/assets/e5f4f1d1-3177-418f-a67c-4f8e12cf0155"
+        alt="Privora Demo 3"
+        width="220"
+        hspace="15"
+      />
+    </td>
+  </tr>
+</table>
+
+## 𝕏 Follow Privora
+
+Follow **Privora** on X for product updates, Midnight development progress, privacy insights, and Preprod releases.
+
+👉 **[Follow @PrivoraWeb3 on X](https://x.com/PrivoraWeb3/)**
+
 ---
 
 ## 📋 Quick Links & CheckList
 | Network     | Address                                                              |
 | ----------- | -------------------------------------------------------------------- |
+| 𝕏 **X / Twitter** | [@PrivoraWeb3](https://x.com/PrivoraWeb3/) |
 | **🌐Live Demo** | [https://privora-new.vercel.app](https://privora-new.vercel.app) |
 | **Preprod** | `0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9` |
 | **Demo Video** |[Watch the Privora Demo Video on Google Drive](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing) |
