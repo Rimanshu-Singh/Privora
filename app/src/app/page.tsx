@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -121,63 +122,90 @@ export default function Home() {
       {/* ─────────────────────────────────────────────────────────────
           1. HERO SECTION
           ───────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden px-6 pt-16 pb-20 sm:pt-24 sm:pb-28 lg:px-10">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div>
-            {/* Status indicator / Eyebrow */}
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-border-subtle bg-surface-raised px-3.5 py-1 text-xs shadow-xs">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-              </span>
-              <span className="font-mono text-[11px] font-semibold tracking-wider text-muted uppercase">
-                Midnight · Zero-Knowledge Credentials
-              </span>
-            </div>
+      <section className="relative overflow-hidden px-6 pt-20 pb-16 sm:pt-28 sm:pb-24 lg:px-10">
+        {/* Transparent ambient background art centered */}
+        <div
+          className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden opacity-25 select-none [mask-image:radial-gradient(ellipse_75%_70%_at_center,black_40%,transparent_80%)]"
+          aria-hidden="true"
+        >
+          <Image
+            src="/hero-bg.png"
+            alt="Privora Ambient Artwork"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center scale-105"
+          />
+        </div>
 
-            {/* Main Headline */}
-            <h1 className="mt-6 font-display text-5xl leading-[1.04] tracking-tight text-primary sm:text-6xl lg:text-7xl">
-              Prove you belong.
-              <br />
-              Show <em className="italic font-normal">nothing else.</em>
-            </h1>
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          {/* Status indicator / Eyebrow */}
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-border-subtle bg-surface-raised px-4 py-1.5 text-xs shadow-xs">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+            </span>
+            <span className="font-mono text-[11px] font-semibold tracking-wider text-muted uppercase">
+              Midnight · Zero-Knowledge Credentials
+            </span>
+          </div>
 
-            {/* Supporting Copy */}
-            <p className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
-              Verify membership with a trusted issuer, then prove access to any app on Midnight. Privora returns
-              only the result an application needs — never your name, credential, or wallet history.
+          {/* Main Headline */}
+          <h1 className="mt-8 font-display text-5xl leading-[1.04] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+            Prove you belong.
+            <br />
+            Show <em className="italic font-normal">nothing else.</em>
+          </h1>
+
+          {/* Supporting Copy */}
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
+            Verify membership with a trusted issuer, then prove access to any app on Midnight. Privora returns
+            only the result an application needs — never your name, credential, or wallet history.
+          </p>
+
+          {/* Action CTAs */}
+          <div className="mt-10 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
+            <Link
+              href="/gate"
+              className="btn-primary inline-flex min-h-12 w-full items-center justify-center gap-2 px-8 text-sm font-semibold shadow-xs sm:w-auto"
+            >
+              <span>Try the live demo</span>
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+            <Link
+              href="/admin"
+              className="btn-secondary inline-flex min-h-12 w-full items-center justify-center px-7 text-sm font-semibold sm:w-auto"
+            >
+              Open operator console
+            </Link>
+          </div>
+
+          {/* Subtle supporting status badge */}
+          <div className="mt-8 flex items-center justify-center gap-3 text-xs text-faint">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="font-mono text-[11px] tracking-wide uppercase">
+              Preprod · Proofs run locally in browser
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          2. VERIFICATION PIPELINE (LANDSCAPE FORMAT)
+          ───────────────────────────────────────────────────────────── */}
+      <section className="relative px-6 pt-4 pb-20 sm:pb-28 lg:px-10">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 text-center">
+            <p className="eyebrow">Interactive Pipeline</p>
+            <h2 className="mt-3 font-display text-3xl leading-tight text-primary sm:text-4xl">
+              Private input → Zero-knowledge proof → Minimal verified output.
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted">
+              Observe how secrets stay shielded on-device while generating cryptographically binding proofs for Midnight.
             </p>
-
-            {/* Action CTAs */}
-            <div className="mt-9 flex flex-col gap-3.5 sm:flex-row sm:items-center">
-              <Link
-                href="/gate"
-                className="btn-primary inline-flex min-h-12 items-center justify-center gap-2 px-7 text-sm font-semibold shadow-xs"
-              >
-                <span>Try the live demo</span>
-                <ArrowRight size={16} aria-hidden="true" />
-              </Link>
-              <Link
-                href="/admin"
-                className="btn-secondary inline-flex min-h-12 items-center justify-center px-6 text-sm font-semibold"
-              >
-                Open operator console
-              </Link>
-            </div>
-
-            {/* Subtle supporting status badge */}
-            <div className="mt-8 flex items-center gap-3 text-xs text-faint">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
-              <span className="font-mono text-[11px] tracking-wide uppercase">
-                Preprod · Proofs run locally in browser
-              </span>
-            </div>
           </div>
 
-          {/* Hero Visual Centerpiece */}
-          <div className="lg:justify-self-end w-full">
-            <HeroVisual />
-          </div>
+          <HeroVisual />
         </div>
       </section>
 
