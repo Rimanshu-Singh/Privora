@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "/", label: "Try it" },
+  { href: "/gate", label: "Try it" },
   { href: "/#how-it-works", label: "How it works" },
-  { href: "/#privacy", label: "Why Midnight" },
-  { href: "/admin", label: "Install" },
+  { href: "/#why-midnight", label: "Why Midnight" },
+  { href: "/#install", label: "Install" },
 ];
 
 export function Navigation() {
@@ -55,10 +55,10 @@ export function Navigation() {
       )}
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-10">
         <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="flex h-7 w-7 items-center justify-center" aria-hidden="true">
-            <Image src="/logo.svg" alt="Privora Logo" width={28} height={28} className="h-full w-full" priority />
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-dark p-1.5 shadow-sm" aria-hidden="true">
+            <Image src="/logo.svg" alt="Privora Logo" width={20} height={20} className="h-full w-full" priority />
           </span>
-          <span className="font-display text-lg text-primary">Privora</span>
+          <span className="font-display text-lg text-primary tracking-tight">Privora</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
