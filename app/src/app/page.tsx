@@ -3,17 +3,12 @@ import Link from "next/link";
 import {
   ArrowRight,
   Check,
-  Shield,
   ShieldCheck,
   Cpu,
   Layers,
   Lock,
   ArrowUpRight,
   ExternalLink,
-  KeyRound,
-  FileCheck2,
-  Terminal,
-  CircleDot,
   ChevronRight,
 } from "lucide-react";
 import { HeroVisual } from "@/components/landing/HeroVisual";
@@ -259,7 +254,7 @@ export default function Home() {
 
           {/* Three Steps with Connected Flow Architecture */}
           <div className="relative mt-16 grid gap-6 md:grid-cols-3">
-            {roles.map((role, idx) => (
+            {roles.map((role) => (
               <article
                 key={role.number}
                 className="paper-card relative flex flex-col justify-between p-7 transition-all duration-200 hover:border-accent/40 hover:shadow-md"

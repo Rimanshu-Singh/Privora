@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Terminal, Package, Layers } from "lucide-react";
+import { Check, Copy, Terminal, Package } from "lucide-react";
 
 type PkgManager = "npm" | "pnpm" | "yarn";
 
@@ -94,11 +94,11 @@ export function InstallSection() {
           </div>
 
           <div className="mt-6 rounded-lg bg-dark/95 p-3.5 font-mono text-[11px] leading-5 text-white/80">
-            <div className="text-white/40">// Deploy a gate on Preprod</div>
+            <div className="text-white/40">{"// Deploy a gate on Preprod"}</div>
             <div>
               <span className="text-accent-soft">$</span> privora gate:deploy --network preprod
             </div>
-            <div className="mt-1 text-white/40">// Enroll a credential commitment</div>
+            <div className="mt-1 text-white/40">{"// Enroll a credential commitment"}</div>
             <div>
               <span className="text-accent-soft">$</span> privora enroll --hash 0x7b4a...
             </div>
@@ -146,7 +146,7 @@ export function InstallSection() {
           </div>
 
           <div className="mt-6 rounded-lg bg-dark/95 p-3.5 font-mono text-[11px] leading-5 text-white/80">
-            <div className="text-white/40">// Embed into your web application</div>
+            <div className="text-white/40">{"// Embed into your web application"}</div>
             <div>
               <span className="text-emerald-300">const</span> {"{ verify, isProving }"} = <span className="text-accent-soft">useGate</span>({"{"}
             </div>

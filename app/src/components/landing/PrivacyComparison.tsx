@@ -7,10 +7,8 @@ import {
   Globe2,
   Lock,
   Check,
-  FileCode2,
   KeyRound,
   Database,
-  ArrowRight,
   Fingerprint,
 } from "lucide-react";
 

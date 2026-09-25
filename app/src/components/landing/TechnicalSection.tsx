@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Terminal, Shield, Cpu, Code2 } from "lucide-react";
+import { Check, Copy, Terminal, Shield, Code2 } from "lucide-react";
 
 type CodeTab = "flow" | "compact";
 
