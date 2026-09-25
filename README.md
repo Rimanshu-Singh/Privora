@@ -19,44 +19,6 @@
 * **Contract ID:** `0xf0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511`
 * **Preprod Contract Explorer:** [View Privora Contract](https://explorer.1am.xyz/contract/f0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511)
 
-# ✅ Moonshots Level 6 — Requirements Complete
-
-## Level 6 — Preprod Validation & Public Launch Evidence
-
-Privora has completed the Level 6 validation requirements with documented **Midnight Preprod usage, user feedback, wallet interactions, deployed contract evidence, and public project resources**.
-
-| Requirement                  | Evidence                                                                                                                            | Status     |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| Midnight Preprod Deployment  | Contract deployed on Midnight Preprod                                                                                               | ✅ Complete |
-| Contract ID                  | `0xf0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511`                                                                | ✅ Complete |
-| Contract Explorer            | [View Contract on 1AM Explorer](https://explorer.1am.xyz/contract/f0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511) | ✅ Complete |
-| Preprod Wallet Interactions  | **70 / 70 verified wallet interactions**                                                                                            | ✅ Complete |
-| Transaction Evidence         | Transaction hashes recorded for wallet interactions                                                                                 | ✅ Complete |
-| User Feedback                | **70 / 70 feedback records collected**                                                                                              | ✅ Complete |
-| Feedback Validation          | User feedback reviewed and improvement areas documented                                                                             | ✅ Complete |
-| Live Application             | [privora-new.vercel.app](https://privora-new.vercel.app)                                                                            | ✅ Complete |
-| Demo Screenshots             | 3 Privora demo screenshots documented                                                                                               | ✅ Complete |
-| Demo Video                   | [Privora Demo Video](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing)                            | ✅ Complete |
-| Public X Account             | [@PrivoraWeb3](https://x.com/PrivoraWeb3/)                                                                                          | ✅ Complete |
-| Public Project Documentation | Level 1–6 requirements and evidence documented                                                                                      | ✅ Complete |
-
-## Level 6 Validation Summary
-
-* **Network:** Midnight Preprod
-* **Contract:** `0xf0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511`
-* **Wallet Interactions:** **70 / 70**
-* **User Feedback Records:** **70 / 70**
-* **Transaction Records:** **70**
-* **Live Demo:** Available
-* **Contract Explorer:** Available
-* **Demo Screenshots:** Available
-* **Demo Video:** Available
-* **Public X:** Available
-
-## 🎯 Level 6 Status
-
-> **✅ COMPLETE — Privora has completed the Level 6 Preprod validation and public evidence requirements with 70 wallet interactions, 70 user feedback records, deployed contract evidence, live demo, screenshots, video, and public project links.**
-
 
 ## Documentation
 
@@ -92,22 +54,35 @@ See [`LAUNCH_USERS.md`](./Documents/LAUNCH_USERS.md) for the complete 70 Preprod
 
 See [`docs/FEEDBACK.md`](./docs/FEEDBACK.md) for the complete user-testing report and iteration history.
 
-### Key Improvements From User Feedback
+## 🏆 Level 6 Verification & Submission Deliverables
 
-* **🔐 Credential & Access Flow:** Improved the credential issuance and privacy-preserving access flow to make authorization easier to understand and use.
+* 🌐 **Live Web Application:** https://privora-new.vercel.app/ *(Live Privora application deployed for Midnight Preprod testing)*
+* 💻 **Public GitHub Repository:** https://github.com/Shritii-Patel/Privora *(Complete open-source Privora implementation with source code and updated documentation)*
+* ⛓️ **Midnight Preprod Contract:** `0xf0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511`
+* 🔍 **Preprod Contract Explorer:** [View Privora on Midnight Preprod Explorer](https://explorer.1am.xyz/contract/f0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511) *(Publicly verifiable contract deployment)*
+* 📊 **Mandatory User Feedback Google Sheet:** [View Privora User Feedback Responses](https://docs.google.com/spreadsheets/d/1w4VrdXyHe97cSr8v7JyBOvFp2nHmf2gRNNogB7RxByo/edit?usp=sharing) *(User testing, feedback, wallet participation, and Level 6 evidence)*
+* 📝 **User Feedback Collection Form:** [Open Privora Feedback Form](https://forms.gle/gjAijrpqCXcb2Z6m9) *(Used to collect tester feedback, usability observations, issues, and improvement suggestions)*
+* 👥 **70 Verifiable Midnight Preprod User Entries:** `70 Midnight Preprod wallet entries` *(Documented tester participation and Preprod onboarding evidence)*
+* 💬 **Documented Feedback Loop:** `FEEDBACK.md` *(Documents tester feedback, identified friction points, product improvements, and development iterations)*
+* 📚 **Updated Project Documentation:** `README.md` *(Complete documentation covering Privora architecture, privacy model, credential flow, Zero-Knowledge verification, wallet integration, Preprod deployment, and usage instructions)*
+* 🎥 **Demo Video Walkthrough:** [Watch the Privora Demo Video on Google Drive](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing) *(Full end-to-end Privora application demonstration)*
+* 🔐 **Privacy-Preserving Credential Verification:** Privora enables users to prove authorization or credential eligibility through Zero-Knowledge verification without unnecessarily exposing their underlying private credential information.
+* 🛡️ **Privacy-First Access Control:** Privora provides privacy-preserving access control by separating authorization proofs from sensitive user credentials and identity information.
+* 🔑 **Credential-Based Authorization:** Users can use privacy-preserving credentials to prove that they satisfy the required access conditions without revealing unnecessary personal information.
+* ♻️ **Credential Revocation:** Privora supports credential revocation handling so revoked or invalid credentials cannot be used to obtain authorized access.
+* 👛 **Midnight Wallet Integration:** Midnight Preprod wallet integration enables users to connect, authenticate, and interact with Privora's privacy-preserving credential flow.
+* 🌐 **Midnight Preprod Integration:** Privora is deployed and tested against the Midnight Preprod environment with publicly verifiable contract activity.
+* 🧪 **End-to-End MVP Verification:** ✅ Complete *(Wallet connection → credential issuance → credential/proof generation → Zero-Knowledge verification → authorization decision → protected access)*
+* 🔒 **Private Credential Handling:** Sensitive credential information and private proof-generation data remain protected throughout the verification flow and are not unnecessarily exposed on-chain.
+* ⚙️ **CI/CD Pipeline:** ✅ Configured and passing *(Automated build and verification workflow integrated into the public repository)*
+* 💻 **Continuous Development:** `Meaningful development and iteration history` *(Demonstrates ongoing implementation, testing, bug fixes, UX refinement, and Level 6 improvements)*
+* 🧑‍💻 **User Validation:** `70 Midnight Preprod tester entries` *(Demonstrates documented real-user testing and Preprod validation)*
+* 📈 **Feedback-Driven Iteration:** ✅ Complete *(Tester feedback was reviewed and translated into documented UX, onboarding, verification, and product improvements)*
+* 🚀 **Public Launch Evidence:** ✅ Complete *(Live application, deployed contract, explorer verification, user testing, feedback records, documentation, and demo materials publicly available)*
 
-* **⏱️ ZK Proof Experience:** Added clearer loading, proving, and verification states during Zero-Knowledge proof generation to provide better feedback while cryptographic operations are running.
+### 🟢 Level 6 Status
 
-* **♻️ Credential Revocation:** Improved revoked-credential handling so invalid or expired credentials are rejected clearly without unnecessarily exposing private information.
-
-* **🛡️ Privacy & Selective Disclosure:** Refined the interface to make it clearer what information is proven versus what remains private, reinforcing Privora's privacy-first access model.
-
-* **👛 Wallet Onboarding:** Improved Midnight Preprod wallet connection guidance and onboarding for smoother first-time testing.
-
-* **💧 Preprod Onboarding:** Added clearer tDUST and network setup guidance to reduce transaction failures during initial testing.
-
-* **📱 UI/UX Improvements:** Refined responsive layouts, status indicators, error states, and verification feedback based on tester observations.
-
+**All required Level 6 deliverables have been completed and documented for Privora. The project provides a publicly verifiable Midnight Preprod deployment, live application, public GitHub repository, documented tester participation, user feedback records, feedback collection form, updated documentation, demo video, privacy-preserving credential verification, revocation handling, wallet integration, CI/CD, and complete end-to-end verification evidence.**
 
 ## 🌒 Moonshots Level 1 → 6 — Requirements & Submission Checklist
 ## 🌐 Live Demo
@@ -170,6 +145,8 @@ Follow **Privora** on X for product updates, Midnight development progress, priv
 | Explorer | [Midnight Preprod Explorer](https://preprod.midnightexplorer.com/contracts/f0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511)                                                                                                        |
 | Contract | [0xf0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511](https://preprod.midnightexplorer.com/contracts/f0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511) |
 
+### UI 
+<img width="1896" height="916" alt="image" src="https://github.com/user-attachments/assets/3015ad02-108c-4fe5-8318-c6e89cf9a76b" />
 
 ### 1. Automated Test Suite Passing
 
