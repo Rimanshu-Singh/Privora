@@ -14,6 +14,7 @@ import {
   FileCheck2,
   Terminal,
   CircleDot,
+  ChevronRight,
 } from "lucide-react";
 import { HeroVisual } from "@/components/landing/HeroVisual";
 import { PrivacyComparison } from "@/components/landing/PrivacyComparison";
@@ -122,70 +123,63 @@ export default function Home() {
       {/* ─────────────────────────────────────────────────────────────
           1. HERO SECTION
           ───────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden px-6 pt-20 pb-16 sm:pt-28 sm:pb-24 lg:px-10">
-        {/* Transparent ambient background art centered */}
-        <div
-          className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden opacity-25 select-none [mask-image:radial-gradient(ellipse_75%_70%_at_center,black_40%,transparent_80%)]"
-          aria-hidden="true"
-        >
+      <section className="relative overflow-hidden bg-black text-white px-6 pt-20 pb-24 sm:pt-28 sm:pb-36 lg:px-10">
+        {/* Landscape Image Background */}
+        <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden select-none">
           <Image
-            src="/hero-bg.png"
-            alt="Privora Ambient Artwork"
+            src="/Landscape_image.jpg"
+            alt="Privora Zero-Knowledge Ambient Landscape"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center scale-105"
+            className="object-cover object-center opacity-85"
           />
+          {/* Black shadow coming upside from the bottom */}
+          <div className="absolute inset-x-0 bottom-0 h-96 bg-linear-to-t from-black via-black/85 to-transparent" />
+          <div className="absolute inset-0 bg-radial from-transparent via-black/20 to-black/70" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          {/* Status indicator / Eyebrow */}
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-border-subtle bg-surface-raised px-4 py-1.5 text-xs shadow-xs">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+          {/* Centered Pill Announcement Tag (No white border) */}
+          <div className="inline-flex items-center gap-2 rounded-full bg-black/60 px-4 py-1.5 text-xs shadow-md backdrop-blur-md transition-transform hover:scale-[1.02]">
+            <span className="rounded-full bg-accent px-2.5 py-0.5 font-mono text-[10px] font-semibold text-white tracking-wide uppercase">
+              Preprod
             </span>
-            <span className="font-mono text-[11px] font-semibold tracking-wider text-muted uppercase">
-              Midnight · Zero-Knowledge Credentials
+            <span className="font-mono text-[11px] font-medium text-white/90">
+              Midnight Zero-Knowledge Credentials
             </span>
+            <ChevronRight size={13} className="text-white/60" />
           </div>
 
           {/* Main Headline */}
-          <h1 className="mt-8 font-display text-5xl leading-[1.04] tracking-tight text-primary sm:text-6xl lg:text-7xl">
+          <h1 className="mt-8 font-display text-5xl leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-7xl">
             Prove you belong.
             <br />
-            Show <em className="italic font-normal">nothing else.</em>
+            Show <em className="italic font-normal text-emerald-300">nothing else.</em>
           </h1>
 
           {/* Supporting Copy */}
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg sm:leading-8">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/80 sm:text-lg sm:leading-8">
             Verify membership with a trusted issuer, then prove access to any app on Midnight. Privora returns
             only the result an application needs — never your name, credential, or wallet history.
           </p>
 
-          {/* Action CTAs */}
-          <div className="mt-10 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
+          {/* Action CTAs (No white borders) */}
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/gate"
-              className="btn-primary inline-flex min-h-12 w-full items-center justify-center gap-2 px-8 text-sm font-semibold shadow-xs sm:w-auto"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-8 text-sm font-semibold text-black shadow-lg transition-all hover:bg-neutral-200 sm:w-auto"
             >
               <span>Try the live demo</span>
               <ArrowRight size={16} aria-hidden="true" />
             </Link>
             <Link
               href="/admin"
-              className="btn-secondary inline-flex min-h-12 w-full items-center justify-center px-7 text-sm font-semibold sm:w-auto"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-1.5 rounded-full bg-black/70 px-7 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-black/90 sm:w-auto"
             >
-              Open operator console
+              <span>Open operator console</span>
+              <ChevronRight size={15} className="text-white/60" />
             </Link>
-          </div>
-
-          {/* Subtle supporting status badge */}
-          <div className="mt-8 flex items-center justify-center gap-3 text-xs text-faint">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
-            <span className="font-mono text-[11px] tracking-wide uppercase">
-              Preprod · Proofs run locally in browser
-            </span>
           </div>
         </div>
       </section>
