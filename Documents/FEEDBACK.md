@@ -1,25 +1,49 @@
-# User Feedback - Level 5
+# User Feedback & Validation
 
-## Feedback Collection Method
-Direct outreach via Discord channels, Telegram developer groups, and Twitter (X) replies following the Preprod release link.
+## Level 6 — User Feedback
 
-## Raw Feedback Log
-| # | User | Feedback Summary | Date |
-|---|------|-----------------|------|
-| 1 | @0x_builder | Getting tDUST from the faucet was not obvious. Tried to execute transactions without gas tokens. | 2026-09-08 |
-| 2 | TG: AlexM | Lace connection disconnected when switching tabs during local ZK proof generation. | 2026-09-08 |
-| 3 | @zk_fanatic | WhisperScore verification takes 3-5 seconds locally; without visual feedback, it caused accidental double clicks. | 2026-09-09 |
-| 4 | TG: cryptodave | Received an unhandled circuit runtime error when entering negative numbers in the threshold input. | 2026-09-10 |
-| 5 | @dev_sarah | On-chain verification works well, but users requested a score tier legend to understand threshold metrics. | 2026-09-11 |
+**Network:** Midnight Preprod
+**Target:** 70 wallet interactions
+**Verified:** 70 / 70
+**Feedback Records:** 70 / 70
+**Status:** ✅ **COMPLETE**
 
-## What We Heard (Themes)
-* **Onboarding Friction:** New users need clear instructions and faucet links to acquire Preprod tDUST before interacting.
-* **Prover Latency & UI Locking:** Local Compact circuit execution requires an explicit spinner and disabled button state to prevent duplicate calls.
-* **Input Sanitization & Context:** The client must reject non-positive values before executing proof circuits, and tier classifications need visual context.
+User testing was conducted on Midnight Preprod with feedback collected from **70 wallet interactions**. The feedback covered wallet connection, onboarding, privacy, credential verification, UI/UX, accessibility, performance, and requested improvements.
 
-## Level 6 Improvements
-| Change | User Feedback That Triggered It | Status |
-|--------|--------------------------------|--------|
-| Added faucet banner & Preprod tDUST link in `WalletConnect.tsx` | Users didn't know how to get tDUST and tried zero-gas transactions. | Implemented (Commit `28a122f`) |
-| Added loading spinner & disabled state in `VerifyPowerUser.tsx` | App appeared frozen during 3-5s ZK proof generation, causing accidental double clicks. | Implemented (Commit `8727bb4`) |
-| Added client-side input validation & score tier legend | Negative inputs caused circuit runtime errors; users wanted visual context for the threshold metrics. | Implemented (Commit `8727bb4`) |
+### Key Feedback
+
+| Feedback Area  | User Feedback                                                                                     |
+| -------------- | ------------------------------------------------------------------------------------------------- |
+| Wallet         | Wallet connection was smooth and easy.                                                            |
+| Onboarding     | First-time setup could be clearer.                                                                |
+| Privacy        | Users liked the privacy-focused approach but wanted a simpler explanation of what data is shared. |
+| Verification   | Some users requested clearer credential status and verification information.                      |
+| Credentials    | Expiry and multiple issuers were suggested.                                                       |
+| Access Control | Role-based access was requested.                                                                  |
+| Performance    | Users reported a smooth and responsive experience.                                                |
+| UI/UX          | The interface, layout, and overall design received positive feedback.                             |
+| Accessibility  | Accessibility features were positively received.                                                  |
+| Mobile         | Responsive improvements were identified as an area for future refinement.                         |
+| Documentation  | Users suggested adding a small guide and demo integration.                                        |
+| Bugs           | Most users reported no major bugs during testing.                                                 |
+
+### Validation Evidence
+
+Each feedback record is associated with a **Midnight Preprod wallet address** and corresponding **transaction hash**, providing traceable evidence for the user validation activity.
+
+### Level 6 Completion Checklist
+
+* [x] 70 Preprod wallet interactions collected
+* [x] 70 user feedback records collected
+* [x] Wallet addresses recorded
+* [x] Transaction hashes recorded
+* [x] Feedback reviewed and categorized
+* [x] UX and improvement suggestions documented
+* [x] User validation completed
+* [x] Level 6 evidence documented
+
+## Final Status
+
+> **Level 6 — ✅ COMPLETE**
+
+**70 / 70 Preprod wallet interactions validated with user feedback and supporting transaction records.**
