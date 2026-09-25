@@ -123,8 +123,8 @@ export default function Home() {
       {/* ─────────────────────────────────────────────────────────────
           1. HERO SECTION
           ───────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-black text-white px-6 pt-20 pb-24 sm:pt-28 sm:pb-36 lg:px-10">
-        {/* Landscape Image Background */}
+      <section className="relative z-10 overflow-hidden bg-black text-white px-6 pt-20 pb-24 sm:pt-28 sm:pb-36 lg:px-10 shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
+        {/* Landscape Image Background - Kept Clear and Visible */}
         <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden select-none">
           <Image
             src="/Landscape_image.jpg"
@@ -132,11 +132,15 @@ export default function Home() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center opacity-85"
+            className="object-cover object-center opacity-100"
           />
-          {/* Black shadow coming upside from the bottom */}
-          <div className="absolute inset-x-0 bottom-0 h-96 bg-linear-to-t from-black via-black/85 to-transparent" />
-          <div className="absolute inset-0 bg-radial from-transparent via-black/20 to-black/70" />
+          {/* Gentle black drop shadow at the bottom end of the image to softly hide the cut edge */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-20 sm:h-28 pointer-events-none"
+            style={{
+              background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%)",
+            }}
+          />
         </div>
 
         <div className="relative z-10 mx-auto max-w-4xl text-center">
@@ -152,14 +156,14 @@ export default function Home() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="mt-8 font-display text-5xl leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-8 font-display text-5xl leading-[1.04] tracking-tight text-white sm:text-6xl lg:text-7xl drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
             Prove you belong.
             <br />
             Show <em className="italic font-normal text-emerald-300">nothing else.</em>
           </h1>
 
           {/* Supporting Copy */}
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/80 sm:text-lg sm:leading-8">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/90 sm:text-lg sm:leading-8 drop-shadow-[0_1px_8px_rgba(0,0,0,0.85)]">
             Verify membership with a trusted issuer, then prove access to any app on Midnight. Privora returns
             only the result an application needs — never your name, credential, or wallet history.
           </p>
