@@ -1,62 +1,112 @@
-<div align="center">
+# Privora
 
-  <h1 align="center">🔐 Privora</h1>
-  <h3>Privacy-First Zero-Knowledge Access Control on Midnight Network</h3>
-  <p><i>Prove you're authorized — without revealing who you are.</i></p>
+[![Midnight CI](https://github.com/Rimanshu-Singh/Privora/actions/workflows/ci.yml/badge.svg)](https://github.com/Rimanshu-Singh/Privora/actions/workflows/ci.yml)
+[![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen)](./tests/)
+[![Compact](https://img.shields.io/badge/Compact-0.31.1-blue)](https://docs.midnight.network/)
+[![Network](https://img.shields.io/badge/Network-Midnight%20Preprod-purple)](https://indexer.preprod.midnight.network/api/v4/graphql)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  <br />
-  <img src="https://img.shields.io/badge/Midnight_Network-000000?style=for-the-badge" alt="Midnight Network" />
-  <img src="https://img.shields.io/badge/Next.js_15-black?style=for-the-badge&logo=next.js" alt="Next.js" />
-  <img src="https://img.shields.io/badge/Lace_Wallet-7B68EE?style=for-the-badge" alt="Lace Wallet" />
-  <img src="https://img.shields.io/badge/1AM_Wallet-FF5733?style=for-the-badge" alt="1AM Wallet" />
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License" />
+> **Privacy-preserving zero-knowledge credential and access verification platform built on Midnight Network.**
 
-<br /><br />
+* **Live Preprod Demo:** https://privora-new.vercel.app/ *(Live Privora Application on Midnight Preprod)*
+* **GitHub Repository:** https://github.com/Rimanshu-Singh/Privora
+* **Product X (Twitter):** [@PrivoraWeb3](https://x.com/PrivoraWeb3/) *(Official Product X Profile · Product Updates & Community Outreach)*
+* **Demo Video:** [Watch the Privora Demo](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing)
+* **Preprod Users Registry:** [LAUNCH_USERS.md](./LAUNCH_USERS.md) *(Target: 70 genuine Preprod wallet interactions · Current: 70/70 Complete)*
+* **Official User Feedback Form:** [Submit / View Privora Feedback Form](https://docs.google.com/forms/d/e/1FAIpQLSciAYIUXLMQ-Z5GdbEJJPOKXYj4u-a_b-0x5pEdQ-2huKYqFg/viewform?usp=dialog)
+* **User Feedback Responses Sheet:** [Official Privora Feedback Responses](https://docs.google.com/spreadsheets/d/1MQgUmQQO8K4V0bllDMm-l4uf-XwyKs3KND7wLE-JXkE/edit?usp=sharing) *(70/70 Preprod user feedback records)*
+* **User Feedback & Validation:** [FEEDBACK.md](./FEEDBACK.md)
+* **Contract ID:** `0xf0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511`
+* **Preprod Contract Explorer:** [View Privora Contract](https://explorer.1am.xyz/contract/f0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511)
 
-  
-  
-  <a href="https://github.com/Rimanshu-Singh/Privora/actions/runs/29904557079">
-    <img src="https://img.shields.io/badge/CI%2FCD-passing-brightgreen?style=for-the-badge" alt="CI/CD Pipeline Status" />
-  </a>
-</div>
-<br />
-<img width="2534" height="1314" alt="image" src="https://github.com/user-attachments/assets/f24ed750-4d7c-4a84-8402-026a6d941047" />
-<br />
-<br />
+# ✅ Moonshots Level 6 — Requirements Complete
 
-> Confidential, production-grade Zero-Knowledge access control gateway built on the Midnight Network. Privora lets users prove they are authorized to access a resource — without ever revealing their identity, wallet history, or the underlying credential.
+## Level 6 — Preprod Validation & Public Launch Evidence
 
-**Privora** replaces traditional wallet-based allowlists and token-gated access with a Zero-Knowledge Merkle membership proof. Members prove they hold a valid, enrolled credential and generate a single-use nullifier locally in their browser — nothing sensitive ever touches the chain. Built for the **First Quarter (Level 3)** challenge as part of the **RiseIn & Midnight Foundation "New Moon to Full: Monthly Moonshots on Midnight" Program 2026**.
+Privora has completed the Level 6 validation requirements with documented **Midnight Preprod usage, user feedback, wallet interactions, deployed contract evidence, and public project resources**.
+
+| Requirement                  | Evidence                                                                                                                            | Status     |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| Midnight Preprod Deployment  | Contract deployed on Midnight Preprod                                                                                               | ✅ Complete |
+| Contract ID                  | `0xf0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511`                                                                | ✅ Complete |
+| Contract Explorer            | [View Contract on 1AM Explorer](https://explorer.1am.xyz/contract/f0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511) | ✅ Complete |
+| Preprod Wallet Interactions  | **70 / 70 verified wallet interactions**                                                                                            | ✅ Complete |
+| Transaction Evidence         | Transaction hashes recorded for wallet interactions                                                                                 | ✅ Complete |
+| User Feedback                | **70 / 70 feedback records collected**                                                                                              | ✅ Complete |
+| Feedback Validation          | User feedback reviewed and improvement areas documented                                                                             | ✅ Complete |
+| Live Application             | [privora-new.vercel.app](https://privora-new.vercel.app)                                                                            | ✅ Complete |
+| Demo Screenshots             | 3 Privora demo screenshots documented                                                                                               | ✅ Complete |
+| Demo Video                   | [Privora Demo Video](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing)                            | ✅ Complete |
+| Public X Account             | [@PrivoraWeb3](https://x.com/PrivoraWeb3/)                                                                                          | ✅ Complete |
+| Public Project Documentation | Level 1–6 requirements and evidence documented                                                                                      | ✅ Complete |
+
+## Level 6 Validation Summary
+
+* **Network:** Midnight Preprod
+* **Contract:** `0xf0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511`
+* **Wallet Interactions:** **70 / 70**
+* **User Feedback Records:** **70 / 70**
+* **Transaction Records:** **70**
+* **Live Demo:** Available
+* **Contract Explorer:** Available
+* **Demo Screenshots:** Available
+* **Demo Video:** Available
+* **Public X:** Available
+
+## 🎯 Level 6 Status
+
+> **✅ COMPLETE — Privora has completed the Level 6 Preprod validation and public evidence requirements with 70 wallet interactions, 70 user feedback records, deployed contract evidence, live demo, screenshots, video, and public project links.**
+
 
 ## Documentation
 
-| Document | Description |
-|----------|-------------|
-| [README.md](./README.md) | Complete and concise project overview |
-| [ARCHITECTURE.md](./Documents/Architecture.md) | System architecture, project structure, and implementation details |
-| [PROPOSAL.md](./Documents/PROPOSAL.md) | Product proposal and Zero Knowledge solution overview |
-| [PLAN.md](./Documents/PLAN.md) | Development roadmap and implementation plan |
-| [midnight_level3_privora_plan.md](./Documents/midnight_level3_privora_plan.md) | Original Level 3 project planning and design document |
-| [TRUST_MODEL.md](./Documents/TRUST_MODEL.md) | Privacy model, trust assumptions, and security boundaries |
+## 📚 Documentation
+
+| Document                                                           | Description                                                                              |
+| ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| [README.md](./README.md)                                           | Complete project overview, features, setup, architecture, and deployment information     |
+| [Architecture.md](./Architecture.md)                               | System architecture, project structure, components, and implementation details           |
+| [FEEDBACK.md](./FEEDBACK.md)                                       | User testing feedback, ratings, issues, suggestions, and documented feedback loop        |
+| [LAUNCH_USERS.md](./LAUNCH_USERS.md)                               | Launch user information and Midnight Preprod user onboarding evidence                    |
+| [PLAN.md](./PLAN.md)                                               | Development roadmap, milestones, and implementation plan                                 |
+| [PROPOSAL.md](./PROPOSAL.md)                                       | Product proposal and Zero-Knowledge solution overview                                    |
+| [TRUST_MODEL.md](./TRUST_MODEL.md)                                 | Privacy model, trust assumptions, security boundaries, and threat considerations         |
+| [USERS.md](./USERS.md)                                             | Midnight Preprod user wallet addresses and verification evidence                         |
+| [midnight_level6_Privora_plan.md](./midnight_level6_Privora_plan.md) | Level 6 Privora planning, requirements, implementation progress, and submission checklist |
+
 ---
 
 
 ## Level 6 Users
-See [`LAUNCH_USERS.md`](./Documents/LAUNCH_USERS.md)
 
-## Level 5 - User Validation & Iteration
-- **Target:** 50 Preprod users
-- **Current Verified:** 50 / 50
-- **User Directory:** See [`USERS.md`](./Documents/USERS.md) for full verified addresses.
-- **Feedback & Changes:** See [`Documents/FEEDBACK.md`](./Documents/FEEDBACK.md) for raw feedback logs, feedback themes, and applied code iterations.
+See [`LAUNCH_USERS.md`](./Documents/LAUNCH_USERS.md) for the complete 70 Preprod tester registry and launch-user evidence.
+
+## Level 5 — User Validation & Iteration
+
+* **Target:** 50 Midnight Preprod users
+* **Verified:** 50 / 50
+* **User Directory:** See [`USERS.md`](./Documents/USERS.md) for the complete verified wallet-address registry.
+* **Feedback & Changes:** See [`Documents/FEEDBACK.md`](./Documents/FEEDBACK.md) for tester feedback, identified issues, feedback themes, and implemented improvements.
 
 ## Feedback & Iterations
-See [`docs/FEEDBACK.md`](./docs/FEEDBACK.md) for full details.
-Summary of top changes made from user feedback:
-* **Gas Onboarding:** Added a tDUST faucet banner to prevent zero-gas transaction failures for first-time Preprod testers.
-* **Prover Latency & UI Locking:** Implemented a frontend loading spinner and disabled button states during local ZK proof generation to prevent accidental double-clicking.
-* **Input Validation & Context:** Added client-side input validation for positive numbers to prevent circuit crashes, along with a visual tier legend (Bronze, Silver, Gold) for scoring context.
 
+See [`docs/FEEDBACK.md`](./docs/FEEDBACK.md) for the complete user-testing report and iteration history.
+
+### Key Improvements From User Feedback
+
+* **🔐 Credential & Access Flow:** Improved the credential issuance and privacy-preserving access flow to make authorization easier to understand and use.
+
+* **⏱️ ZK Proof Experience:** Added clearer loading, proving, and verification states during Zero-Knowledge proof generation to provide better feedback while cryptographic operations are running.
+
+* **♻️ Credential Revocation:** Improved revoked-credential handling so invalid or expired credentials are rejected clearly without unnecessarily exposing private information.
+
+* **🛡️ Privacy & Selective Disclosure:** Refined the interface to make it clearer what information is proven versus what remains private, reinforcing Privora's privacy-first access model.
+
+* **👛 Wallet Onboarding:** Improved Midnight Preprod wallet connection guidance and onboarding for smoother first-time testing.
+
+* **💧 Preprod Onboarding:** Added clearer tDUST and network setup guidance to reduce transaction failures during initial testing.
+
+* **📱 UI/UX Improvements:** Refined responsive layouts, status indicators, error states, and verification feedback based on tester observations.
 
 
 ## 🌒 Moonshots Level 1 → 6 — Requirements & Submission Checklist
@@ -106,31 +156,19 @@ Follow **Privora** on X for product updates, Midnight development progress, priv
 | ----------- | -------------------------------------------------------------------- |
 | 𝕏 **X / Twitter** | [@PrivoraWeb3](https://x.com/PrivoraWeb3/) |
 | **🌐Live Demo** | [https://privora-new.vercel.app](https://privora-new.vercel.app) |
-| **Preprod** | `0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9` |
+| **Preprod** | `0xf0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511` |
 | **Demo Video** |[Watch the Privora Demo Video on Google Drive](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing) |
 | CI/CD pipeline running (workflow file + passing runs)                 |               ✅ **Passed**   [5ec3709](https://github.com/Rimanshu-Singh/Privora/actions/runs/30528466593)             |
 
-> Preprod deployed. Verify the new address on [Midnight Preprod Explorer](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9) 
+> Preprod deployed. Verify the new address on [Midnight Preprod Explorer](https://preprod.midnightexplorer.com/contracts/f0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511) 
 
 ---
 ## 🔎 Explorer Verification (Preview NetWork)
 
 | Resource | Link                                                                                                                                                                        |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Explorer | [Midnight Preprod Explorer](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9)                                                                                                        |
-| Contract | [0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9) |
-### 🌓 Level 3 — First Quarter
-
-**Chosen Idea:** _Private Allowlist Access_ — prove membership without revealing identity.
-
-| Requirement                                                           |                   Status                   |
-| --------------------------------------------------------------------- | :----------------------------------------: |
-| Fully functional dApp that meaningfully uses Midnight's privacy model |               ✅ **Passed**                |
-| Minimum 3 tests passing                                               |  ✅ **Passed**   |
-| CI/CD pipeline running (workflow file + passing runs)                 |               ✅ **Passed**                |
-| Approved idea submitted from the provided idea list                   | ✅ **Passed** — _Private Allowlist Access_ |
-| Minimum 10 meaningful commits                                         |               ✅ **Passed**                |
-
+| Explorer | [Midnight Preprod Explorer](https://preprod.midnightexplorer.com/contracts/f0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511)                                                                                                        |
+| Contract | [0xf0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511](https://preprod.midnightexplorer.com/contracts/f0da564b99a757abc847caec763b764c44f21ad4a30654452fc6918f9290a511) |
 
 
 ### 1. Automated Test Suite Passing
@@ -138,61 +176,14 @@ Follow **Privora** on X for product updates, Midnight development progress, priv
 <img width="486" height="169" alt="Screenshot 2026-07-22 123954" src="https://github.com/user-attachments/assets/b71b9cdb-8fc5-46d3-9a80-b390b3c44db1" />
 
 ### 2. Deployed on Prepod Network
-<img width="2544" height="1321" alt="Screenshot 2026-07-22 135748" src="https://github.com/user-attachments/assets/aca7ee5c-7e34-41ca-a7fe-adc8c38a265b" />
+<img width="1632" height="907" alt="image" src="https://github.com/user-attachments/assets/1bec17a7-52fb-4224-abc8-17566a5952f3" />
+
 
 ### 3. CI & CD Running (both smartcontract and frontend works)
 
 <img width="1902" height="783" alt="image" src="https://github.com/user-attachments/assets/6dbc54a7-ce0e-46fc-a483-ecdfda078f4c" />
 
-### 4. Commit Over 16 meaningful commits   ✅ **Passed**  
 
-**Submission Checklist**
-
-- [x] Public GitHub repository with complete README
-- [x] Live demo link
-- [x] Screenshot: test output (3+ tests passing)
-- [x] CI/CD badge or workflow file with passing runs
-- [x] Demo video (1 minute) showing full functionality
-- [x] README "privacy model" section: what an observer can and cannot learn
-- [x] Product proposal (from the idea list) submitted for approval
-- [x] Minimum 10 meaningful commits
-
----
-
-### 🌒 Level 2 — Waxing Crescent
-
-| Requirement                                                           |                                                                                                  Status                                                                                                   |
-| --------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| Lace wallet connect / disconnect implemented                          |                                                                      ✅ **Passed** — Browser DApp Connector API, Lace & 1AM support                                                                       |
-| Circuit called successfully from the frontend                         |                                                         ✅ **Passed** — `verify_access()` runs in local ZK prover, broadcast via contract wrapper                                                         |
-| An observable privacy behavior (something proven without being shown) |                                                ✅ **Passed** — Merkle membership + nullifier check proven locally without revealing the secret credential                                                 |
-| Contract deployed to Preprod with a verifiable address | [0x8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9](https://preprod.midnightexplorer.com/contracts/8dde1979ba272a8403b5cd30f8bfd6e1da0c4cec386db5babd9633d0b13947b9)|
-| Minimum 8 meaningful commits                                          |                                                                                               ✅ **Passed**                                                                                               |
-
-## 🎬 Demo-Video
-
-[Watch the Privora Demo Video on Google Drive](https://drive.google.com/file/d/1kORStuYk75lLGvJRnh2td8-BcJ3vEhAo/view?usp=sharing)
-
-### What to Record (Under 2 Minutes)
-
-1. **Connect Lace wallet** — show the address appear on screen
-2. **Admin flow** — deploy a gate and enroll a credential hash
-3. **Navigate to Member Access page** — show the Public vs Private comparison
-4. **Click "Generate Proof"** — show the loading state during ZK proof generation
-5. **Show the on-chain result** — transaction hash and "Proved without revealing your input" label
-6. **Point out** that the raw secret credential was never shown in the UI or sent to the chain
-7. **Disconnect wallet** — show the UI reset to disconnected state
-
-**Submission Checklist**
-
-- [x] Public GitHub repository with README
-- [x] Live demo link (Vercel, Netlify, or similar)
-- [x] Deployed Preprod contract address 
-- [x] Demo video: wallet connect + a successful circuit call
-- [x] README documenting the privacy claim
-- [x] Minimum 8 meaningful commits
-
----
 
 # Architecture
 
